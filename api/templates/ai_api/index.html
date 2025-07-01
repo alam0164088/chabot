@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sparktech AI Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5em;
+            border-bottom: 1px solid #0056b3;
+        }
+        .auth-section, .chat-section {
+            padding: 20px;
+        }
+        .auth-section h2, .chat-section h2 {
+            margin-top: 0;
+            color: #007bff;
+            text-align: center;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .toggle-btn {
+            background-color: #6c757d;
+        }
+        .toggle-btn:hover {
+            background-color: #5a6268;
+        }
+        .error-message {
+            color: red;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .chat-display {
+            border: 1px solid #eee;
+            border-radius: 5px;
+            padding: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            background-color: #e9ecef;
+            display: flex;
+            flex-direction: column;
+        }
+        .message {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        .message.user {
+            background-color: #d1e7dd; /* Light green for user */
+            align-self: flex-end;
+            text-align: right;
+        }
+        .message.bot {
+            background-color: #f8d7da; /* Light red for bot */
+            align-self: flex-start;
+            text-align: left;
+        }
+        #chat-input-area {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        #chat-input-area textarea {
+            flex-grow: 1;
+            margin-bottom: 0;
+            resize: vertical;
+            min-height: 40px;
+        }
+        #chat-input-area button {
+            width: auto;
+            min-width: 80px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Sparktech AI Chatbot</div>
+
+        <div id="auth-section" class="auth-section">
+            <h2 id="auth-mode">Register</h2>
+            <div class="error-message" id="auth-error"></div>
+            <input type="text" id="username" placeholder="Username">
+            <input type="email" id="email" placeholder="Email (optional)">
+            <input type="password" id="password" placeholder="Password">
+            <button id="auth-submit">Register</button>
+            <button id="toggle-auth-mode" class="toggle-btn">Switch to Login</button>
+        </div>
+
+        <div id="chat-section" class="chat-section hidden">
+            <h2>Chat with AI</h2>
+            <p>Logged in as: <strong id="current-user"></strong></p>
+            <button id="logout-btn">Logout</button>
+            <hr>
+            <div class="chat-display" id="chat-display">
+                </div>
+            <div id="chat-input-area">
+                <textarea id="user-query" placeholder="Type your message..."></textarea>
+                <button id="send-query">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set your Django API base URL here. It's the same origin now.
+        const API_BASE_URL = '/api/'; 
+
+        // Get DOM elements
+        const authSection = document.getElementById('auth-section');
+        const chatSection = document.getElementById('chat-section');
+        const authMode = document.getElementById('auth-mode');
+        const usernameInput = document.getElementById('username');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const authSubmitBtn = document.getElementById('auth-submit');
+        const toggleAuthModeBtn = document.getElementById('toggle-auth-mode');
+        const authErrorDiv = document.getElementById('auth-error');
+        const currentUserSpan = document.getElementById('current-user');
+        const logoutBtn = document.getElementById('logout-btn');
+        const chatDisplay = document.getElementById('chat-display');
+        const userQueryTextarea = document.getElementById('user-query');
+        const sendQueryBtn = document.getElementById('send-query');
+
+        let isLoginMode = false; // Tracks whether we are in login or register mode
+
+        // --- Utility Functions ---
+
+        function showAuthError(message) {
+            authErrorDiv.textContent = message;
+            authErrorDiv.classList.remove('hidden');
+        }
+
+        function clearAuthError() {
+            authErrorDiv.textContent = '';
+            authErrorDiv.classList.add('hidden');
+        }
+
+        function setAuthToken(token) {
+            localStorage.setItem('access_token', token.access);
+            localStorage.setItem('refresh_token', token.refresh);
+        }
+
+        function getAccessToken() {
+            return localStorage.getItem('access_token');
+        }
+
+        function getRefreshToken() {
+            return localStorage.getItem('refresh_token');
+        }
+
+        function clearAuthTokens() {
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('refresh_token');
+        }
+
+        function appendMessage(sender, text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', sender);
+            messageDiv.textContent = text;
+            chatDisplay.appendChild(messageDiv);
+            chatDisplay.scrollTop = chatDisplay.scrollHeight; // Scroll to bottom
+        }
+
+        async function fetchWithAuth(url, options = {}) {
+            const token = getAccessToken();
+            if (token) {
+                options.headers = {
+                    ...options.headers,
+                    'Authorization': `Bearer ${token}`
+                };
+            }
+            const response = await fetch(url, options);
+            if (response.status === 401 && getRefreshToken()) { // Token expired or invalid, try refreshing
+                console.log("Access token expired, attempting to refresh...");
+                const refreshSuccess = await refreshAccessToken();
+                if (refreshSuccess) {
+                    // Retry original request with new token
+                    const newToken = getAccessToken();
+                    options.headers = {
+                        ...options.headers,
+                        'Authorization': `Bearer ${newToken}`
+                    };
+                    return fetch(url, options);
+                } else {
+                    throw new Error("Failed to refresh token. Please log in again.");
+                }
+            }
+            return response;
+        }
+
+        async function refreshAccessToken() {
+            const refreshToken = getRefreshToken();
+            if (!refreshToken) return false;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}token/refresh/`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ refresh: refreshToken })
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    localStorage.setItem('access_token', data.access);
+                    return true;
+                } else {
+                    console.error("Refresh token failed:", await response.json());
+                    clearAuthTokens();
+                    return false;
+                }
+            } catch (error) {
+                console.error("Error refreshing token:", error);
+                clearAuthTokens();
+                return false;
+            }
+        }
+
+
+        // --- Authentication Logic ---
+
+        async function handleAuthSubmit() {
+            clearAuthError();
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+            const email = emailInput.value;
+
+            if (!username || !password) {
+                showAuthError("Username and password are required.");
+                return;
+            }
+
+            let url = isLoginMode ? `${API_BASE_URL}token/` : `${API_BASE_URL}register/`;
+            let body = { username, password };
+            if (!isLoginMode && email) { // Add email only for registration if provided
+                body.email = email;
+            }
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    if (isLoginMode) {
+                        setAuthToken(data); // Save access and refresh tokens
+                        localStorage.setItem('username_for_display', username); // Store username for display
+                        currentUserSpan.textContent = username;
+                        showChatSection();
+                        loadChatHistory();
+                    } else {
+                        alert("Registration successful! Please login.");
+                        toggleAuthMode(); // Switch to login mode after successful registration
+                    }
+                } else {
+                    // Display specific error messages from API
+                    const errorMsg = data.detail || (data.username && `Username: ${data.username[0]}`) || (data.password && `Password: ${data.password[0]}`) || JSON.stringify(data);
+                    showAuthError(errorMsg);
+                }
+            } catch (error) {
+                console.error('Auth request failed:', error);
+                showAuthError("Network error or API is unreachable.");
+            }
+        }
+
+        function toggleAuthMode() {
+            isLoginMode = !isLoginMode;
+            authMode.textContent = isLoginMode ? "Login" : "Register";
+            authSubmitBtn.textContent = isLoginMode ? "Login" : "Register";
+            toggleAuthModeBtn.textContent = isLoginMode ? "Switch to Register" : "Switch to Login";
+            emailInput.classList.toggle('hidden', isLoginMode); // Hide email for login
+            clearAuthError();
+            usernameInput.value = '';
+            passwordInput.value = '';
+            emailInput.value = '';
+        }
+
+        function showAuthSection() {
+            authSection.classList.remove('hidden');
+            chatSection.classList.add('hidden');
+            clearAuthTokens();
+            localStorage.removeItem('username_for_display'); // Clear stored username
+            clearChatDisplay();
+            isLoginMode = false; // Reset to register mode when showing auth
+            toggleAuthMode(); // Toggle once to set to "Register" correctly
+        }
+
+        function showChatSection() {
+            authSection.classList.add('hidden');
+            chatSection.classList.remove('hidden');
+        }
+
+        function clearChatDisplay() {
+            chatDisplay.innerHTML = '';
+        }
+
+        async function logout() {
+            showAuthSection();
+            alert("You have been logged out.");
+        }
+
+
+        // --- Chat Logic ---
+
+        async function sendQuery() {
+            const query = userQueryTextarea.value.trim();
+            if (!query) return;
+
+            appendMessage('user', query);
+            userQueryTextarea.value = ''; // Clear input
+
+            try {
+                const response = await fetchWithAuth(`${API_BASE_URL}chat/`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ query: query })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    appendMessage('bot', data.bot_response);
+                } else {
+                    const errorData = await response.json();
+                    appendMessage('bot', `Error: ${errorData.error || 'Failed to get response.'}`);
+                }
+            } catch (error) {
+                console.error('Error sending query:', error);
+                appendMessage('bot', `System Error: ${error.message || 'Could not connect to chatbot service.'}`);
+                if (error.message.includes("Failed to refresh token")) {
+                    showAuthSection(); // Force logout if token refresh fails
+                    alert("Your session expired. Please log in again.");
+                }
+            }
+        }
+
+        async function loadChatHistory() {
+            clearChatDisplay();
+            try {
+                const response = await fetchWithAuth(`${API_BASE_URL}chat/history/`);
+                if (response.ok) {
+                    const history = await response.json();
+                    if (history.length === 0) {
+                        appendMessage('bot', 'No chat history found. Start chatting!');
+                    } else {
+                        history.forEach(msg => {
+                            appendMessage('user', msg.user_query);
+                            appendMessage('bot', msg.bot_response);
+                        });
+                    }
+                } else {
+                    const errorData = await response.json();
+                    appendMessage('bot', `Failed to load history: ${errorData.error || 'Unknown error'}`);
+                }
+            } catch (error) {
+                console.error('Error loading chat history:', error);
+                appendMessage('bot', `System Error: ${error.message || 'Could not load chat history.'}`);
+                if (error.message.includes("Failed to refresh token")) {
+                    showAuthSection(); // Force logout if token refresh fails
+                    alert("Your session expired. Please log in again.");
+                }
+            }
+        }
+
+        // --- Event Listeners ---
+        authSubmitBtn.addEventListener('click', handleAuthSubmit);
+        toggleAuthModeBtn.addEventListener('click', toggleAuthMode);
+        logoutBtn.addEventListener('click', logout);
+        sendQueryBtn.addEventListener('click', sendQuery);
+        userQueryTextarea.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter' && !event.shiftKey) { // Enter key without Shift
+                event.preventDefault(); // Prevent new line
+                sendQuery();
+            }
+        });
+
+        // --- Initial Check on Load ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const storedUsername = localStorage.getItem('username_for_display');
+            if (getAccessToken() && storedUsername) {
+                currentUserSpan.textContent = storedUsername;
+                showChatSection();
+                loadChatHistory();
+            } else {
+                showAuthSection();
+            }
+        });
+    </script>
+</body>
+</html>
