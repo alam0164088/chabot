@@ -7,10 +7,10 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f7f6;
+            background-color: rgb(28, 37, 38); /* Dark blackish base */
             margin: 0;
             min-height: 100vh;
-            color: #333;
+            color: rgb(224, 231, 255); /* Light neon bluish-white for text */
         }
         .main-layout {
             display: flex;
@@ -18,19 +18,19 @@
         }
         .sidebar {
             width: 260px;
-            background: #23272f;
-            color: #fff;
+            background: rgb(23, 29, 33); /* Darker shade for sidebar */
+            color: rgb(224, 231, 255); /* Neon bluish-white text */
             display: flex;
             flex-direction: column;
             padding: 0;
-            border-right: 1.5px solid #e0e0e0;
+            border-right: 1.5px solid rgb(59, 130, 246); /* Neon blue border */
         }
         .sidebar-header {
             padding: 20px 16px 10px 16px;
             font-size: 1.3em;
             font-weight: bold;
-            border-bottom: 1px solid #333;
-            background: #181b20;
+            border-bottom: 1px solid rgb(45, 55, 72); /* Darker neon border */
+            background: rgb(45, 55, 72); /* Slightly lighter dark for header */
         }
         .history-list {
             flex: 1;
@@ -40,43 +40,46 @@
         .history-item {
             padding: 10px 18px;
             cursor: pointer;
-            border-bottom: 1px solid #2c2f36;
-            color: #e0e0e0;
-            transition: background 0.2s;
+            border-bottom: 1px solid rgb(45, 55, 72); /* Darker border */
+            color: rgb(224, 231, 255); /* Neon bluish-white */
+            transition: background 0.3s ease, transform 0.2s ease;
         }
         .history-item:hover {
-            background: #31343b;
+            background: rgb(59, 130, 246); /* Neon blue on hover */
+            transform: translateX(5px); /* Slide effect on hover */
         }
         .container {
             flex: 1;
-            background-color: #ffffff;
+            background-color: rgb(28, 37, 38); /* Dark blackish chat area */
             display: flex;
             flex-direction: column;
             height: 100vh;
             position: relative;
         }
         .header {
-            background-color: #007bff;
-            color: white;
+            background-color: rgb(59, 130, 246); /* Neon blue for header */
+            color: rgb(255, 255, 255);
             padding: 15px;
             text-align: center;
             font-size: 1.5em;
-            border-bottom: 1px solid #0056b3;
+            border-bottom: 1px solid rgb(37, 99, 235); /* Darker neon blue */
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); /* Glow effect */
         }
         .auth-section {
             position: absolute;
             top: 20px;
             right: 30px;
-            background: #fff;
+            background: rgb(23, 29, 33); /* Dark background for auth */
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); /* Neon blue glow */
             padding: 18px 24px 16px 24px;
             z-index: 10;
             min-width: 270px;
+            animation: fadeIn 0.5s ease-in;
         }
         .auth-section h2 {
             margin-top: 0;
-            color: #007bff;
+            color: rgb(236, 72, 153); /* Neon pink for title */
             text-align: center;
         }
         .chat-section {
@@ -89,7 +92,7 @@
         }
         .chat-section h2 {
             margin-top: 0;
-            color: #007bff;
+            color: rgb(236, 72, 153); /* Neon pink for title */
             text-align: center;
         }
         input[type="text"],
@@ -99,9 +102,17 @@
             width: 100%;
             padding: 10px;
             margin-bottom: 10px;
-            border: 1px solid #ddd;
-            background-color: #e9ecef;
+            border: 1px solid rgb(59, 130, 246); /* Neon blue border */
+            background-color: rgb(45, 55, 72); /* Dark input background */
+            color: rgb(224, 231, 255); /* Neon bluish-white text */
             border-radius: 5px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: rgb(236, 72, 153); /* Neon pink on focus */
+            box-shadow: 0 0 8px rgba(236, 72, 153, 0.5); /* Glow effect */
         }
         .message {
             margin-bottom: 10px;
@@ -109,16 +120,19 @@
             border-radius: 8px;
             max-width: 80%;
             word-wrap: break-word;
+            animation: fadeIn 0.5s ease-in;
         }
         .message.user {
-            background-color: #d1e7dd;
+            background-color: rgb(59, 130, 246); /* Neon blue for user messages */
             align-self: flex-end;
             text-align: right;
+            color: rgb(255, 255, 255);
         }
         .message.bot {
-            background-color: #f8d7da;
+            background-color: rgb(236, 72, 153); /* Neon pink for bot messages */
             align-self: flex-start;
             text-align: left;
+            color: rgb(255, 255, 255);
         }
         .chat-display {
             flex: 1;
@@ -141,14 +155,116 @@
         #chat-input-area button {
             width: auto;
             min-width: 80px;
+            background-color: rgb(16, 185, 129); /* Neon green for send button */
+            color: rgb(255, 255, 255);
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        #chat-input-area button:hover {
+            background-color: rgb(5, 150, 105); /* Darker neon green */
+            transform: scale(1.05); /* Slight scale-up on hover */
+        }
+        #chat-input-area button:active {
+            transform: scale(0.95); /* Scale-down on click */
         }
         .hidden {
             display: none;
         }
         @media (max-width: 900px) {
             .main-layout { flex-direction: column; }
-            .sidebar { width: 100%; height: 180px; flex-direction: row; border-right: none; border-bottom: 1.5px solid #e0e0e0; }
+            .sidebar { width: 100%; height: 180px; flex-direction: row; border-right: none; border-bottom: 1.5px solid rgb(59, 130, 246); }
             .container { height: calc(100vh - 180px); }
+        }
+        .profile-area {
+            position: absolute;
+            top: 24px;
+            right: 36px;
+            z-index: 20;
+        }
+        .profile-circle {
+            width: 44px;
+            height: 44px;
+            background: rgb(16, 185, 129); /* Neon green for profile circle */
+            color: rgb(255, 255, 255);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5); /* Neon green glow */
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .profile-circle:hover {
+            background: rgb(5, 150, 105); /* Darker neon green */
+            transform: rotate(360deg); /* Rotate animation on hover */
+        }
+        .profile-dropdown {
+            display: none;
+            position: absolute;
+            top: 54px;
+            right: 0;
+            background: rgb(23, 29, 33); /* Dark dropdown background */
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); /* Neon blue glow */
+            min-width: 180px;
+            padding: 10px 0;
+            z-index: 30;
+            animation: fadeIn 0.5s ease-in;
+        }
+        .profile-dropdown.active {
+            display: block;
+        }
+        .profile-dropdown .profile-name {
+            padding: 10px 20px;
+            font-weight: bold;
+            color: rgb(224, 231, 255); /* Neon bluish-white */
+            border-bottom: 1px solid rgb(59, 130, 246); /* Neon blue border */
+        }
+        .profile-dropdown .logout-btn {
+            width: 100%;
+            background: none;
+            border: none;
+            color: rgb(239, 68, 68); /* Neon red for logout */
+            padding: 12px 20px;
+            text-align: left;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 0 0 8px 8px;
+            transition: background 0.3s ease;
+        }
+        .profile-dropdown .logout-btn:hover {
+            background: rgb(236, 72, 153); /* Neon pink on hover */
+        }
+        .error-message {
+            color: rgb(239, 68, 68); /* Neon red for error messages */
+            font-size: 0.9em;
+            text-align: center;
+            margin: 10px;
+        }
+        button {
+            background-color: rgb(59, 130, 246); /* Neon blue for all buttons */
+            color: rgb(255, 255, 255);
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: rgb(37, 99, 235); /* Darker neon blue */
+            transform: scale(1.05); /* Slight scale-up on hover */
+        }
+        button:active {
+            transform: scale(0.95); /* Scale-down on click */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -162,6 +278,13 @@
         </div>
         <div class="container">
             <div class="header">Sparktech AI Chatbot</div>
+            <div class="profile-area hidden" id="profile-area">
+                <div class="profile-circle" id="profile-circle"></div>
+                <div class="profile-dropdown" id="profile-dropdown">
+                    <div class="profile-name" id="profile-name"></div>
+                    <button class="logout-btn" id="profile-logout-btn">Logout</button>
+                </div>
+            </div>
             <div id="auth-section" class="auth-section">
                 <h2 id="auth-mode">Register</h2>
                 <div class="error-message" id="auth-error"></div>
@@ -173,9 +296,6 @@
             </div>
             <div id="chat-section" class="chat-section hidden">
                 <h2>Chat with AI</h2>
-                <p>Logged in as: <strong id="current-user"></strong></p>
-                <button id="logout-btn">Logout</button>
-                <hr>
                 <div class="chat-display" id="chat-display"></div>
                 <div id="chat-input-area">
                     <textarea id="user-query" placeholder="Type your message..."></textarea>
@@ -198,8 +318,11 @@
         const authSubmitBtn = document.getElementById('auth-submit');
         const toggleAuthModeBtn = document.getElementById('toggle-auth-mode');
         const authErrorDiv = document.getElementById('auth-error');
-        const currentUserSpan = document.getElementById('current-user');
-        const logoutBtn = document.getElementById('logout-btn');
+        const profileArea = document.getElementById('profile-area');
+        const profileCircle = document.getElementById('profile-circle');
+        const profileDropdown = document.getElementById('profile-dropdown');
+        const profileName = document.getElementById('profile-name');
+        const profileLogoutBtn = document.getElementById('profile-logout-btn');
         const chatDisplay = document.getElementById('chat-display');
         const userQueryTextarea = document.getElementById('user-query');
         const sendQueryBtn = document.getElementById('send-query');
@@ -330,7 +453,6 @@
                     if (isLoginMode) {
                         setAuthToken(data); // Save access and refresh tokens
                         localStorage.setItem('username_for_display', username); // Store username for display
-                        currentUserSpan.textContent = username;
                         showChatSection();
                         loadChatHistory();
                     } else {
@@ -363,6 +485,7 @@
         function showAuthSection() {
             authSection.classList.remove('hidden');
             chatSection.classList.add('hidden');
+            profileArea.classList.add('hidden');
             clearAuthTokens();
             localStorage.removeItem('username_for_display'); // Clear stored username
             clearChatDisplay();
@@ -373,6 +496,19 @@
         function showChatSection() {
             authSection.classList.add('hidden');
             chatSection.classList.remove('hidden');
+            showProfileArea();
+        }
+
+        function showProfileArea() {
+            const storedUsername = localStorage.getItem('username_for_display');
+            if (storedUsername) {
+                profileArea.classList.remove('hidden');
+                profileCircle.textContent = storedUsername.charAt(0).toUpperCase();
+                profileName.textContent = storedUsername;
+            } else {
+                profileArea.classList.add('hidden');
+            }
+            profileDropdown.classList.remove('active');
         }
 
         function clearChatDisplay() {
@@ -450,7 +586,21 @@
         // --- Event Listeners ---
         authSubmitBtn.addEventListener('click', handleAuthSubmit);
         toggleAuthModeBtn.addEventListener('click', toggleAuthMode);
-        logoutBtn.addEventListener('click', logout);
+        profileCircle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            profileDropdown.classList.toggle('active');
+        });
+        // Hide dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!profileArea.contains(e.target)) {
+                profileDropdown.classList.remove('active');
+            }
+        });
+        // Logout from profile dropdown
+        profileLogoutBtn.addEventListener('click', function() {
+            showAuthSection();
+            alert("You have been logged out.");
+        });
         sendQueryBtn.addEventListener('click', sendQuery);
         userQueryTextarea.addEventListener('keypress', function(event) {
             if (event.key === 'Enter' && !event.shiftKey) { // Enter key without Shift
@@ -463,7 +613,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             const storedUsername = localStorage.getItem('username_for_display');
             if (getAccessToken() && storedUsername) {
-                currentUserSpan.textContent = storedUsername;
                 showChatSection();
                 loadChatHistory();
             } else {
@@ -471,7 +620,7 @@
             }
         });
 
-        // Add/replace the following functions and logic for history sidebar
+        // --- History Sidebar ---
         function renderHistorySidebar(history) {
             const historyList = document.getElementById('history-list');
             historyList.innerHTML = '';
