@@ -1321,3 +1321,270 @@ DEBUG 2025-07-02 08:15:30,032 views 10544 19096 Raw Gemini API response: Hello t
 
 INFO 2025-07-02 08:15:30,051 views 10544 19096 Chat interaction saved for user: nazmul
 INFO 2025-07-02 08:15:30,051 basehttp 10544 19096 "POST /api/chat/ HTTP/1.1" 200 122
+INFO 2025-07-02 16:35:15,644 autoreload 9744 13320 Watching for file changes with StatReloader
+INFO 2025-07-02 16:35:27,405 basehttp 9744 4440 "GET / HTTP/1.1" 200 16560
+WARNING 2025-07-02 16:35:27,708 log 9744 4440 Unauthorized: /api/chat/history/
+WARNING 2025-07-02 16:35:27,710 basehttp 9744 4440 "GET /api/chat/history/ HTTP/1.1" 401 172
+WARNING 2025-07-02 16:35:27,807 log 9744 11564 Not Found: /favicon.ico
+WARNING 2025-07-02 16:35:27,807 basehttp 9744 11564 "GET /favicon.ico HTTP/1.1" 404 3216
+ERROR 2025-07-02 16:35:28,192 log 9744 4440 Internal Server Error: /api/token/refresh/
+Traceback (most recent call last):
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework_simplejwt\views.py", line 44, in post
+    serializer.is_valid(raise_exception=True)
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\serializers.py", line 447, in run_validation
+    value = self.validate(value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 141, in validate
+    refresh.outstand()
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework_simplejwt\tokens.py", line 222, in outstand
+    return OutstandingToken.objects.get_or_create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'OutstandingToken' has no attribute 'objects'
+ERROR 2025-07-02 16:35:28,196 basehttp 9744 4440 "POST /api/token/refresh/ HTTP/1.1" 500 119244
+INFO 2025-07-02 16:35:41,744 basehttp 9744 5636 "POST /api/token/ HTTP/1.1" 200 483
+INFO 2025-07-02 16:35:41,782 basehttp 9744 5636 "GET /api/chat/history/ HTTP/1.1" 200 31368
+INFO 2025-07-02 16:40:34,018 basehttp 9744 13464 "GET / HTTP/1.1" 200 22199
+INFO 2025-07-02 16:40:36,598 basehttp 9744 2176 "GET /api/chat/history/ HTTP/1.1" 200 31368
+INFO 2025-07-02 16:41:28,890 basehttp 9744 13100 "GET / HTTP/1.1" 200 22199
+INFO 2025-07-02 16:41:28,984 basehttp 9744 2176 - Broken pipe from ('127.0.0.1', 57048)
+INFO 2025-07-02 16:50:35,020 autoreload 10156 19056 Watching for file changes with StatReloader
+INFO 2025-07-02 16:50:44,900 basehttp 10156 13192 "GET / HTTP/1.1" 200 19072
+INFO 2025-07-02 16:50:51,358 basehttp 10156 13192 "POST /api/token/ HTTP/1.1" 200 483
+INFO 2025-07-02 16:50:51,396 basehttp 10156 13192 "GET /api/chat/history/ HTTP/1.1" 200 31368
+INFO 2025-07-02 16:50:53,656 basehttp 10156 11288 "POST /api/token/ HTTP/1.1" 200 483
+INFO 2025-07-02 16:50:53,671 basehttp 10156 11288 "GET /api/chat/history/ HTTP/1.1" 200 31368
+INFO 2025-07-02 16:56:22,958 views 10156 14744 Sending query to Gemini API: hai
+DEBUG 2025-07-02 16:56:23,911 views 10156 14744 Raw Gemini API response: Hi there! How can I help you today?
+
+INFO 2025-07-02 16:56:23,928 views 10156 14744 Chat interaction saved for user: nazmul
+INFO 2025-07-02 16:56:23,928 basehttp 10156 14744 "POST /api/chat/ HTTP/1.1" 200 117
+INFO 2025-07-02 16:56:37,790 views 10156 14744 Sending query to Gemini API: how are you
+DEBUG 2025-07-02 16:56:38,553 views 10156 14744 Raw Gemini API response: I am doing well, thank you for asking!  How are you today?
+
+INFO 2025-07-02 16:56:38,595 views 10156 14744 Chat interaction saved for user: nazmul
+INFO 2025-07-02 16:56:38,599 basehttp 10156 14744 "POST /api/chat/ HTTP/1.1" 200 148
+INFO 2025-07-02 16:57:41,774 views 10156 14744 Chat interaction saved for user: nazmul
+INFO 2025-07-02 16:57:41,776 basehttp 10156 14744 "POST /api/chat/ HTTP/1.1" 200 301
+INFO 2025-07-02 16:58:03,021 views 10156 14744 Sending query to Gemini API: please give me some english movi name
+DEBUG 2025-07-02 16:58:05,465 views 10156 14744 Raw Gemini API response: Here are some English movie names, categorized for easier browsing:
+
+**Action/Adventure:**
+
+* The Lord of the Rings: The Fellowship of the Ring
+* Indiana Jones and the Raiders of the Lost Ark
+* Mad Max: Fury Road
+* Avengers: Endgame
+* Mission: Impossible - Fallout
+
+**Comedy:**
+
+* Bridesmaids
+* Monty Python and the Holy Grail
+* The Big Lebowski
+* When Harry Met Sally...
+* The Hangover
+
+**Drama:**
+
+* The Shawshank Redemption
+* Forrest Gump
+* 12 Angry Men
+* Schindler's List
+* The Godfather
+
+**Horror:**
+
+* The Exorcist
+* The Shining
+* The Texas Chain Saw Massacre
+* Get Out
+* Hereditary
+
+**Sci-Fi:**
+
+* Blade Runner 2049
+* Interstellar
+* 2001: A Space Odyssey
+* Star Wars: Episode IV - A New Hope
+* Back to the Future
+
+**Animated:**
+
+* Spider-Man: Into the Spider-Verse
+* Toy Story
+* Up
+* How to Train Your Dragon
+* WALL-E
+
+
+This is just a small sample, of course.  There are thousands of English-language movies!  To get more specific recommendations, tell me what genres you enjoy.
+
+INFO 2025-07-02 16:58:05,511 views 10156 14744 Chat interaction saved for user: nazmul
+INFO 2025-07-02 16:58:05,511 basehttp 10156 14744 "POST /api/chat/ HTTP/1.1" 200 1152
+INFO 2025-07-02 16:58:23,280 views 10156 14744 Sending query to Gemini API: thank you for helping
+DEBUG 2025-07-02 16:58:23,947 views 10156 14744 Raw Gemini API response: You're welcome!  Is there anything else I can help you with today?
+
+INFO 2025-07-02 16:58:23,958 views 10156 14744 Chat interaction saved for user: nazmul
+INFO 2025-07-02 16:58:23,962 basehttp 10156 14744 "POST /api/chat/ HTTP/1.1" 200 166
+INFO 2025-07-02 16:58:48,710 views 10156 14744 Sending query to Gemini API: you are traslate in english to bangla
+DEBUG 2025-07-02 16:58:49,351 views 10156 14744 Raw Gemini API response: Please provide the English text you want me to translate into Bangla.
+
+INFO 2025-07-02 16:58:49,400 views 10156 14744 Chat interaction saved for user: nazmul
+INFO 2025-07-02 16:58:49,410 basehttp 10156 14744 "POST /api/chat/ HTTP/1.1" 200 185
+INFO 2025-07-02 16:59:14,774 views 10156 14744 Sending query to Gemini API: what are you doing now
+DEBUG 2025-07-02 16:59:15,534 views 10156 14744 Raw Gemini API response: I am currently processing your request and formulating a response.
+
+INFO 2025-07-02 16:59:15,574 views 10156 14744 Chat interaction saved for user: nazmul
+INFO 2025-07-02 16:59:15,577 basehttp 10156 14744 "POST /api/chat/ HTTP/1.1" 200 167
+INFO 2025-07-02 16:59:29,952 views 10156 14744 Sending query to Gemini API: translate in bangla
+DEBUG 2025-07-02 16:59:30,615 views 10156 14744 Raw Gemini API response: Please provide the text you would like me to translate into Bangla.
+
+INFO 2025-07-02 16:59:30,659 views 10156 14744 Chat interaction saved for user: nazmul
+INFO 2025-07-02 16:59:30,662 basehttp 10156 14744 "POST /api/chat/ HTTP/1.1" 200 165
+INFO 2025-07-02 16:59:35,571 views 10156 14744 Sending query to Gemini API: hello
+DEBUG 2025-07-02 16:59:36,202 views 10156 14744 Raw Gemini API response: Hello there! How can I help you today?
+
+INFO 2025-07-02 16:59:36,260 views 10156 14744 Chat interaction saved for user: nazmul
+INFO 2025-07-02 16:59:36,266 basehttp 10156 14744 "POST /api/chat/ HTTP/1.1" 200 122
+INFO 2025-07-02 17:00:50,194 basehttp 10156 21348 "GET / HTTP/1.1" 200 20379
+INFO 2025-07-02 17:00:50,745 basehttp 10156 21348 "GET /api/chat/history/ HTTP/1.1" 200 33900
+INFO 2025-07-02 17:02:47,425 basehttp 10156 7156 "GET / HTTP/1.1" 200 19072
+INFO 2025-07-02 17:02:47,486 basehttp 10156 7156 "GET /api/chat/history/ HTTP/1.1" 200 33900
+INFO 2025-07-02 17:02:51,829 views 10156 7156 Sending query to Gemini API: hello
+DEBUG 2025-07-02 17:02:52,490 views 10156 7156 Raw Gemini API response: Hello there! How can I help you today?
+
+INFO 2025-07-02 17:02:52,511 views 10156 7156 Chat interaction saved for user: nazmul
+INFO 2025-07-02 17:02:52,516 basehttp 10156 7156 "POST /api/chat/ HTTP/1.1" 200 122
+INFO 2025-07-02 17:12:30,396 basehttp 10156 22288 "GET / HTTP/1.1" 200 22248
+WARNING 2025-07-02 17:12:30,464 log 10156 22288 Not Found: /socket.io/
+WARNING 2025-07-02 17:12:30,469 basehttp 10156 22288 "GET /socket.io/?EIO=4&transport=polling&t=uxqlom8c HTTP/1.1" 404 3256
+INFO 2025-07-02 17:12:30,479 basehttp 10156 2380 "GET /api/chat/history/ HTTP/1.1" 200 34023
+WARNING 2025-07-02 17:12:31,560 log 10156 2380 Not Found: /socket.io/
+WARNING 2025-07-02 17:12:31,562 basehttp 10156 2380 "GET /socket.io/?EIO=4&transport=polling&t=uxrfyds9 HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:12:33,710 log 10156 2380 Not Found: /socket.io/
+WARNING 2025-07-02 17:12:33,710 basehttp 10156 2380 "GET /socket.io/?EIO=4&transport=polling&t=uxt48aqv HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:12:35,986 log 10156 2380 Not Found: /socket.io/
+WARNING 2025-07-02 17:12:35,988 basehttp 10156 2380 "GET /socket.io/?EIO=4&transport=polling&t=uxuuzmky HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:12:40,998 log 10156 2380 Not Found: /socket.io/
+WARNING 2025-07-02 17:12:40,998 basehttp 10156 2380 "GET /socket.io/?EIO=4&transport=polling&t=uxyqqw5w HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:12:46,029 log 10156 18940 Not Found: /socket.io/
+WARNING 2025-07-02 17:12:46,037 basehttp 10156 18940 "GET /socket.io/?EIO=4&transport=polling&t=uy2m4obx HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:12:51,067 log 10156 18940 Not Found: /socket.io/
+WARNING 2025-07-02 17:12:51,067 basehttp 10156 18940 "GET /socket.io/?EIO=4&transport=polling&t=uy6i4oi5 HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:12:56,096 log 10156 8900 Not Found: /socket.io/
+WARNING 2025-07-02 17:12:56,110 basehttp 10156 8900 "GET /socket.io/?EIO=4&transport=polling&t=uyae4yz7 HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:13:01,136 log 10156 8900 Not Found: /socket.io/
+WARNING 2025-07-02 17:13:01,136 basehttp 10156 8900 "GET /socket.io/?EIO=4&transport=polling&t=uye9rznh HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:13:07,177 log 10156 19588 Not Found: /socket.io/
+WARNING 2025-07-02 17:13:07,177 basehttp 10156 19588 "GET /socket.io/?EIO=4&transport=polling&t=uyiw5tnq HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:13:13,137 log 10156 11896 Not Found: /socket.io/
+WARNING 2025-07-02 17:13:13,137 basehttp 10156 11896 "GET /socket.io/?EIO=4&transport=polling&t=uynj4hi7 HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:13:19,134 log 10156 11896 Not Found: /socket.io/
+WARNING 2025-07-02 17:13:19,134 basehttp 10156 11896 "GET /socket.io/?EIO=4&transport=polling&t=uys606jq HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:13:25,116 log 10156 11896 Not Found: /socket.io/
+WARNING 2025-07-02 17:13:25,116 basehttp 10156 11896 "GET /socket.io/?EIO=4&transport=polling&t=uyws3m05 HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:13:31,129 log 10156 11896 Not Found: /socket.io/
+WARNING 2025-07-02 17:13:31,131 basehttp 10156 11896 "GET /socket.io/?EIO=4&transport=polling&t=uz1exlr7 HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:13:37,128 log 10156 11896 Not Found: /socket.io/
+WARNING 2025-07-02 17:13:37,128 basehttp 10156 11896 "GET /socket.io/?EIO=4&transport=polling&t=uz61le8f HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:13:43,129 log 10156 11896 Not Found: /socket.io/
+WARNING 2025-07-02 17:13:43,129 basehttp 10156 11896 "GET /socket.io/?EIO=4&transport=polling&t=uzao6n3w HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:13:49,117 log 10156 11896 Not Found: /socket.io/
+WARNING 2025-07-02 17:13:49,117 basehttp 10156 11896 "GET /socket.io/?EIO=4&transport=polling&t=uzfb1uku HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:13:55,162 log 10156 11896 Not Found: /socket.io/
+WARNING 2025-07-02 17:13:55,162 basehttp 10156 11896 "GET /socket.io/?EIO=4&transport=polling&t=uzjxqhuh HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:14:01,122 log 10156 11896 Not Found: /socket.io/
+WARNING 2025-07-02 17:14:01,122 basehttp 10156 11896 "GET /socket.io/?EIO=4&transport=polling&t=uzokchun HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:14:07,140 log 10156 11896 Not Found: /socket.io/
+WARNING 2025-07-02 17:14:07,140 basehttp 10156 11896 "GET /socket.io/?EIO=4&transport=polling&t=uzt6wdto HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:14:13,115 log 10156 2076 Not Found: /socket.io/
+WARNING 2025-07-02 17:14:13,115 basehttp 10156 2076 "GET /socket.io/?EIO=4&transport=polling&t=uzxtfm42 HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:14:19,113 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:14:19,113 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v02g87s0 HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:14:25,125 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:14:25,127 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v072zyrr HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:14:31,107 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:14:31,107 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v0bpfusc HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:14:37,129 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:14:37,130 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v0gc47sb HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:14:43,117 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:14:43,117 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v0kyxf5m HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:14:49,139 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:14:49,143 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v0plop6n HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:14:55,133 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:14:55,133 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v0u87dtg HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:15:01,131 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:15:01,133 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v0yuxcja HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:15:07,131 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:15:07,132 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v13hr6xe HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:15:13,143 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:15:13,143 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v184fm4u HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:15:19,126 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:15:19,129 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v1cqs82u HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:15:25,135 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:15:25,135 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v1hdm8h3 HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:15:31,118 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:15:31,118 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v1m03jkr HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:15:37,128 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:15:37,128 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v1qndnmu HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:15:43,115 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:15:43,115 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v1v9mtc7 HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:15:49,129 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:15:49,131 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v1zw8d3d HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:15:55,114 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:15:55,114 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v24iwvnb HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:16:01,160 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:16:01,160 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v295sdrd HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:16:07,123 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:16:07,123 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v2ds8r7s HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:16:13,128 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:16:13,128 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v2ietpkw HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:16:19,153 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:16:19,162 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v2n21x85 HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:16:25,122 log 10156 18496 Not Found: /socket.io/
+WARNING 2025-07-02 17:16:25,125 basehttp 10156 18496 "GET /socket.io/?EIO=4&transport=polling&t=v2ro4ol2 HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:16:31,139 log 10156 9012 Not Found: /socket.io/
+WARNING 2025-07-02 17:16:31,141 basehttp 10156 9012 "GET /socket.io/?EIO=4&transport=polling&t=v2waxjlt HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:16:37,122 log 10156 9012 Not Found: /socket.io/
+WARNING 2025-07-02 17:16:37,122 basehttp 10156 9012 "GET /socket.io/?EIO=4&transport=polling&t=v30xmou2 HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:16:43,121 log 10156 9012 Not Found: /socket.io/
+WARNING 2025-07-02 17:16:43,121 basehttp 10156 9012 "GET /socket.io/?EIO=4&transport=polling&t=v35k7mye HTTP/1.1" 404 3256
+WARNING 2025-07-02 17:16:49,169 log 10156 9012 Not Found: /socket.io/
+WARNING 2025-07-02 17:16:49,171 basehttp 10156 9012 "GET /socket.io/?EIO=4&transport=polling&t=v3a7b7bp HTTP/1.1" 404 3256
+INFO 2025-07-02 17:16:50,554 basehttp 10156 9012 "GET / HTTP/1.1" 200 21757
+INFO 2025-07-02 17:16:50,629 basehttp 10156 9012 "GET /api/chat/history/ HTTP/1.1" 200 34023
+INFO 2025-07-02 17:16:57,663 views 10156 9012 Sending query to Gemini API: hi
+DEBUG 2025-07-02 17:16:59,849 views 10156 9012 Raw Gemini API response: Hi there! How can I help you today?
+
+INFO 2025-07-02 17:16:59,893 views 10156 9012 Chat interaction saved for user: nazmul
+INFO 2025-07-02 17:16:59,897 basehttp 10156 9012 "POST /api/chat/ HTTP/1.1" 200 116
+INFO 2025-07-02 17:17:09,466 views 10156 9012 Sending query to Gemini API: how are you
+DEBUG 2025-07-02 17:17:11,212 views 10156 9012 Raw Gemini API response: I am doing well, thank you for asking!  As a large language model, I don't experience emotions or feelings in the same way humans do, but I'm functioning optimally and ready to assist you. How can I help you today?
+
+INFO 2025-07-02 17:17:11,230 views 10156 9012 Chat interaction saved for user: nazmul
+INFO 2025-07-02 17:17:11,236 basehttp 10156 9012 "POST /api/chat/ HTTP/1.1" 200 304

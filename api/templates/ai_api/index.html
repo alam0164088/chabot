@@ -9,21 +9,51 @@
             font-family: Arial, sans-serif;
             background-color: #f4f7f6;
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
             color: #333;
         }
-        .container {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 600px;
-            overflow: hidden;
+        .main-layout {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 260px;
+            background: #23272f;
+            color: #fff;
             display: flex;
             flex-direction: column;
+            padding: 0;
+            border-right: 1.5px solid #e0e0e0;
+        }
+        .sidebar-header {
+            padding: 20px 16px 10px 16px;
+            font-size: 1.3em;
+            font-weight: bold;
+            border-bottom: 1px solid #333;
+            background: #181b20;
+        }
+        .history-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px 0 10px 0;
+        }
+        .history-item {
+            padding: 10px 18px;
+            cursor: pointer;
+            border-bottom: 1px solid #2c2f36;
+            color: #e0e0e0;
+            transition: background 0.2s;
+        }
+        .history-item:hover {
+            background: #31343b;
+        }
+        .container {
+            flex: 1;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            position: relative;
         }
         .header {
             background-color: #007bff;
@@ -33,10 +63,62 @@
             font-size: 1.5em;
             border-bottom: 1px solid #0056b3;
         }
-        .auth-section, .chat-section {
-            padding: 20px;
+        .user-profile {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background: #007bff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            z-index: 10;
         }
-        .auth-section h2, .chat-section h2 {
+        .profile-menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 15px;
+            min-width: 270px;
+            z-index: 10;
+        }
+        .auth-section {
+            padding: 15px;
+        }
+        .auth-section h2 {
+            margin-top: 0;
+            color: #007bff;
+            text-align: center;
+            font-size: 1.2em;
+        }
+        .profile-info {
+            text-align: center;
+            padding: 10px;
+        }
+        .profile-info p {
+            margin: 0;
+            font-weight: bold;
+            color: #333;
+        }
+        .chat-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px 40px 30px 40px;
+            min-height: 0;
+        }
+        .chat-section h2 {
             margin-top: 0;
             color: #007bff;
             text-align: center;
@@ -45,49 +127,25 @@
         input[type="password"],
         input[type="email"],
         textarea {
-            width: calc(100% - 20px);
+            width: 100%;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ddd;
+            background-color: #e9ecef;
             border-radius: 5px;
-            box-sizing: border-box;
         }
         button {
+            padding: 10px;
             background-color: #007bff;
             color: white;
-            padding: 10px 15px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1em;
             width: 100%;
-            box-sizing: border-box;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
         button:hover {
             background-color: #0056b3;
-        }
-        .toggle-btn {
-            background-color: #6c757d;
-        }
-        .toggle-btn:hover {
-            background-color: #5a6268;
-        }
-        .error-message {
-            color: red;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .chat-display {
-            border: 1px solid #eee;
-            border-radius: 5px;
-            padding: 10px;
-            max-height: 300px;
-            overflow-y: auto;
-            margin-bottom: 10px;
-            background-color: #e9ecef;
-            display: flex;
-            flex-direction: column;
         }
         .message {
             margin-bottom: 10px;
@@ -97,14 +155,21 @@
             word-wrap: break-word;
         }
         .message.user {
-            background-color: #d1e7dd; /* Light green for user */
+            background-color: #d1e7dd;
             align-self: flex-end;
             text-align: right;
         }
         .message.bot {
-            background-color: #f8d7da; /* Light red for bot */
+            background-color: #f8d7da;
             align-self: flex-start;
             text-align: left;
+        }
+        .chat-display {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
         }
         #chat-input-area {
             display: flex;
@@ -121,46 +186,72 @@
             width: auto;
             min-width: 80px;
         }
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            text-align: center;
+            margin-bottom: 10px;
+        }
         .hidden {
             display: none;
+        }
+        @media (max-width: 900px) {
+            .main-layout { flex-direction: column; }
+            .sidebar { width: 100%; height: 180px; flex-direction: row; border-right: none; border-bottom: 1.5px solid #e0e0e0; }
+            .container { height: calc(100vh - 180px); }
+            .user-profile { top: 5px; right: 5px; width: 35px; height: 35px; }
+            .profile-menu { top: 45px; min-width: 200px; right: 5px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">Sparktech AI Chatbot</div>
-
-        <div id="auth-section" class="auth-section">
-            <h2 id="auth-mode">Register</h2>
-            <div class="error-message" id="auth-error"></div>
-            <input type="text" id="username" placeholder="Username">
-            <input type="email" id="email" placeholder="Email (optional)">
-            <input type="password" id="password" placeholder="Password">
-            <button id="auth-submit">Register</button>
-            <button id="toggle-auth-mode" class="toggle-btn">Switch to Login</button>
+    <div class="main-layout">
+        <div class="sidebar">
+            <div class="sidebar-header">History</div>
+            <div class="history-list" id="history-list">
+                <!-- Chat history items will be injected here -->
+            </div>
         </div>
-
-        <div id="chat-section" class="chat-section hidden">
-            <h2>Chat with AI</h2>
-            <p>Logged in as: <strong id="current-user"></strong></p>
-            <button id="logout-btn">Logout</button>
-            <hr>
-            <div class="chat-display" id="chat-display">
+        <div class="container">
+            <div class="header">Sparktech AI Chatbot</div>
+            <div class="user-profile" id="user-profile">
+                <span id="user-initial"></span>
+                <div class="profile-menu" id="profile-menu">
+                    <div id="auth-section" class="auth-section">
+                        <h2 id="auth-mode">Register</h2>
+                        <div class="error-message" id="auth-error"></div>
+                        <input type="text" id="username" placeholder="Username">
+                        <input type="email" id="email" placeholder="Email (optional)">
+                        <input type="password" id="password" placeholder="Password">
+                        <button id="auth-submit">Register</button>
+                        <button id="toggle-auth-mode" class="toggle-btn">Switch to Login</button>
+                    </div>
+                    <div id="profile-info" class="profile-info hidden">
+                        <p id="current-user"></p>
+                        <button id="logout-btn">Logout</button>
+                    </div>
                 </div>
-            <div id="chat-input-area">
-                <textarea id="user-query" placeholder="Type your message..."></textarea>
-                <button id="send-query">Send</button>
+            </div>
+            <div id="chat-section" class="chat-section hidden">
+                <h2>Chat with AI</h2>
+                <div class="chat-display" id="chat-display"></div>
+                <div id="chat-input-area">
+                    <textarea id="user-query" placeholder="Type your message..."></textarea>
+                    <button id="send-query">Send</button>
+                </div>
             </div>
         </div>
     </div>
-
     <script>
         // Set your Django API base URL here. It's the same origin now.
         const API_BASE_URL = '/api/'; 
 
         // Get DOM elements
+        const userProfile = document.getElementById('user-profile');
+        const userInitial = document.getElementById('user-initial');
+        const profileMenu = document.getElementById('profile-menu');
         const authSection = document.getElementById('auth-section');
-        const chatSection = document.getElementById('chat-section');
+        const profileInfo = document.getElementById('profile-info');
         const authMode = document.getElementById('auth-mode');
         const usernameInput = document.getElementById('username');
         const emailInput = document.getElementById('email');
@@ -170,11 +261,13 @@
         const authErrorDiv = document.getElementById('auth-error');
         const currentUserSpan = document.getElementById('current-user');
         const logoutBtn = document.getElementById('logout-btn');
+        const chatSection = document.getElementById('chat-section');
         const chatDisplay = document.getElementById('chat-display');
         const userQueryTextarea = document.getElementById('user-query');
         const sendQueryBtn = document.getElementById('send-query');
 
         let isLoginMode = false; // Tracks whether we are in login or register mode
+        let chatHistoryCache = [];
 
         // --- Utility Functions ---
 
@@ -267,7 +360,6 @@
             }
         }
 
-
         // --- Authentication Logic ---
 
         async function handleAuthSubmit() {
@@ -300,7 +392,7 @@
                     if (isLoginMode) {
                         setAuthToken(data); // Save access and refresh tokens
                         localStorage.setItem('username_for_display', username); // Store username for display
-                        currentUserSpan.textContent = username;
+                        updateProfileUI(username);
                         showChatSection();
                         loadChatHistory();
                     } else {
@@ -330,8 +422,18 @@
             emailInput.value = '';
         }
 
+        function updateProfileUI(username) {
+            userInitial.textContent = username ? username[0].toUpperCase() : '';
+            currentUserSpan.textContent = username || '';
+            authSection.classList.add('hidden');
+            profileInfo.classList.remove('hidden');
+            profileMenu.style.display = 'none';
+        }
+
         function showAuthSection() {
+            userInitial.textContent = '';
             authSection.classList.remove('hidden');
+            profileInfo.classList.add('hidden');
             chatSection.classList.add('hidden');
             clearAuthTokens();
             localStorage.removeItem('username_for_display'); // Clear stored username
@@ -342,7 +444,9 @@
 
         function showChatSection() {
             authSection.classList.add('hidden');
+            profileInfo.classList.add('hidden');
             chatSection.classList.remove('hidden');
+            profileMenu.style.display = 'none';
         }
 
         function clearChatDisplay() {
@@ -353,7 +457,6 @@
             showAuthSection();
             alert("You have been logged out.");
         }
-
 
         // --- Chat Logic ---
 
@@ -394,6 +497,8 @@
                 const response = await fetchWithAuth(`${API_BASE_URL}chat/history/`);
                 if (response.ok) {
                     const history = await response.json();
+                    chatHistoryCache = history;
+                    renderHistorySidebar(history);
                     if (history.length === 0) {
                         appendMessage('bot', 'No chat history found. Start chatting!');
                     } else {
@@ -417,6 +522,10 @@
         }
 
         // --- Event Listeners ---
+        userProfile.addEventListener('click', () => {
+            profileMenu.style.display = profileMenu.style.display === 'block' ? 'none' : 'block';
+        });
+
         authSubmitBtn.addEventListener('click', handleAuthSubmit);
         toggleAuthModeBtn.addEventListener('click', toggleAuthMode);
         logoutBtn.addEventListener('click', logout);
@@ -432,13 +541,41 @@
         document.addEventListener('DOMContentLoaded', () => {
             const storedUsername = localStorage.getItem('username_for_display');
             if (getAccessToken() && storedUsername) {
-                currentUserSpan.textContent = storedUsername;
+                updateProfileUI(storedUsername);
                 showChatSection();
                 loadChatHistory();
             } else {
                 showAuthSection();
             }
         });
+
+        // --- History Sidebar ---
+        function renderHistorySidebar(history) {
+            const historyList = document.getElementById('history-list');
+            historyList.innerHTML = '';
+            if (!history || history.length === 0) {
+                const emptyDiv = document.createElement('div');
+                emptyDiv.className = 'history-item';
+                emptyDiv.textContent = 'No history yet';
+                historyList.appendChild(emptyDiv);
+                return;
+            }
+            history.forEach((msg, idx) => {
+                const item = document.createElement('div');
+                item.className = 'history-item';
+                item.textContent = msg.user_query.length > 30 ? msg.user_query.slice(0, 30) + '...' : msg.user_query;
+                item.title = msg.user_query;
+                item.onclick = () => showSingleHistory(idx);
+                historyList.appendChild(item);
+            });
+        }
+
+        function showSingleHistory(idx) {
+            clearChatDisplay();
+            if (!chatHistoryCache[idx]) return;
+            appendMessage('user', chatHistoryCache[idx].user_query);
+            appendMessage('bot', chatHistoryCache[idx].bot_response);
+        }
     </script>
 </body>
 </html>
