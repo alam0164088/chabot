@@ -1100,3 +1100,224 @@ INFO 2025-07-02 07:46:37,420 basehttp 6792 4400 "POST /api/chat/ HTTP/1.1" 200 1
 INFO 2025-07-02 07:47:20,938 views 6792 4400 Sending query to Gemini API: please give some actors name
 INFO 2025-07-02 07:47:22,957 views 6792 4400 Chat interaction saved for user: nazmul
 INFO 2025-07-02 07:47:22,957 basehttp 6792 4400 "POST /api/chat/ HTTP/1.1" 200 901
+INFO 2025-07-02 07:51:06,052 autoreload 16008 1200 Watching for file changes with StatReloader
+INFO 2025-07-02 07:51:26,203 basehttp 16008 9780 "GET / HTTP/1.1" 200 16560
+INFO 2025-07-02 07:51:26,329 basehttp 16008 9780 "GET /api/chat/history/ HTTP/1.1" 200 25438
+INFO 2025-07-02 07:51:29,969 views 16008 9780 Sending query to Gemini API: hai
+INFO 2025-07-02 07:51:32,161 views 16008 9780 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:51:32,161 basehttp 16008 9780 "POST /api/chat/ HTTP/1.1" 200 117
+INFO 2025-07-02 07:51:33,722 views 16008 9780 Sending query to Gemini API: hello
+INFO 2025-07-02 07:51:34,388 views 16008 9780 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:51:34,394 basehttp 16008 9780 "POST /api/chat/ HTTP/1.1" 200 122
+INFO 2025-07-02 07:51:37,046 views 16008 9780 Sending query to Gemini API: baby
+INFO 2025-07-02 07:51:38,486 views 16008 9780 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:51:38,486 basehttp 16008 9780 "POST /api/chat/ HTTP/1.1" 200 597
+INFO 2025-07-02 07:52:00,271 views 16008 9780 Sending query to Gemini API: please tell something about sparteck
+INFO 2025-07-02 07:52:02,520 views 16008 9780 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:52:02,520 basehttp 16008 9780 "POST /api/chat/ HTTP/1.1" 200 1171
+INFO 2025-07-02 07:52:35,767 views 16008 9780 Sending query to Gemini API: do you know about bsmrstu
+INFO 2025-07-02 07:52:36,683 views 16008 9780 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:52:36,684 basehttp 16008 9780 "POST /api/chat/ HTTP/1.1" 200 291
+INFO 2025-07-02 07:53:29,917 views 16008 9780 Sending query to Gemini API: this information is fully wrong
+INFO 2025-07-02 07:53:30,731 views 16008 9780 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:53:30,732 basehttp 16008 9780 "POST /api/chat/ HTTP/1.1" 200 291
+INFO 2025-07-02 07:54:31,022 views 16008 9780 Sending query to Gemini API: bsmrstu stands for Bangabondhu Science and technology university gopalgang
+INFO 2025-07-02 07:54:31,799 views 16008 9780 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:54:31,801 basehttp 16008 9780 "POST /api/chat/ HTTP/1.1" 200 268
+INFO 2025-07-02 07:55:06,627 views 16008 9780 Sending query to Gemini API: now tell me something about bsmrstu
+INFO 2025-07-02 07:55:09,100 views 16008 9780 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:55:09,100 basehttp 16008 9780 "POST /api/chat/ HTTP/1.1" 200 1628
+INFO 2025-07-02 07:58:41,950 autoreload 16008 1200 C:\Users\Nazmul\Desktop\chatbot\project\settings.py changed, reloading.
+INFO 2025-07-02 07:58:45,012 autoreload 21660 7620 Watching for file changes with StatReloader
+INFO 2025-07-02 07:58:55,263 basehttp 21660 18804 "GET / HTTP/1.1" 200 16560
+INFO 2025-07-02 07:58:55,407 basehttp 21660 18804 "GET /api/chat/history/ HTTP/1.1" 200 29931
+INFO 2025-07-02 07:59:02,203 views 21660 11816 Sending query to Gemini API: hai
+INFO 2025-07-02 07:59:05,022 views 21660 11816 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:59:05,022 basehttp 21660 11816 "POST /api/chat/ HTTP/1.1" 200 117
+INFO 2025-07-02 08:02:44,471 autoreload 21660 7620 C:\Users\Nazmul\Desktop\chatbot\project\settings.py changed, reloading.
+INFO 2025-07-02 08:02:47,511 autoreload 12332 19712 Watching for file changes with StatReloader
+INFO 2025-07-02 08:02:58,372 basehttp 12332 17056 "GET / HTTP/1.1" 200 16560
+ERROR 2025-07-02 08:02:58,542 log 12332 17056 Internal Server Error: /api/chat/history/
+Traceback (most recent call last):
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 503, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 420, in initial
+    self.perform_authentication(request)
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 330, in perform_authentication
+    request.user
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\request.py", line 232, in user
+    self._authenticate()
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\request.py", line 385, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 51, in authenticate
+    return self.get_user(validated_token), validated_token
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 130, in get_user
+    user = self.user_model.objects.get(**{api_settings.USER_ID_FIELD: user_id})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\query.py", line 629, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\query.py", line 366, in __len__
+    self._fetch_all()
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\sql\compiler.py", line 1610, in execute_sql
+    sql, params = self.as_sql()
+                  ^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\sql\compiler.py", line 766, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\sql\compiler.py", line 85, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\sql\compiler.py", line 74, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\sql\compiler.py", line 316, in get_select
+    sql, params = self.compile(col)
+                  ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\sql\compiler.py", line 577, in compile
+    sql, params = node.as_sql(self, self.connection)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\expressions.py", line 1305, in as_sql
+    sql = ".".join(map(compiler.quote_name_unless_alias, identifiers))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\sql\compiler.py", line 568, in quote_name_unless_alias
+    r = self.connection.ops.quote_name(name)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\backends\dummy\base.py", line 20, in complain
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: settings.DATABASES is improperly configured. Please supply the ENGINE value. Check settings documentation for more details.
+ERROR 2025-07-02 08:02:58,552 basehttp 12332 17056 "GET /api/chat/history/ HTTP/1.1" 500 183918
+ERROR 2025-07-02 08:03:04,129 log 12332 17056 Internal Server Error: /api/chat/
+Traceback (most recent call last):
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 503, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 420, in initial
+    self.perform_authentication(request)
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 330, in perform_authentication
+    request.user
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\request.py", line 232, in user
+    self._authenticate()
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\request.py", line 385, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 51, in authenticate
+    return self.get_user(validated_token), validated_token
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 130, in get_user
+    user = self.user_model.objects.get(**{api_settings.USER_ID_FIELD: user_id})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\query.py", line 629, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\query.py", line 366, in __len__
+    self._fetch_all()
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\sql\compiler.py", line 1610, in execute_sql
+    sql, params = self.as_sql()
+                  ^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\sql\compiler.py", line 766, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\sql\compiler.py", line 85, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\sql\compiler.py", line 74, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\sql\compiler.py", line 316, in get_select
+    sql, params = self.compile(col)
+                  ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\sql\compiler.py", line 577, in compile
+    sql, params = node.as_sql(self, self.connection)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\expressions.py", line 1305, in as_sql
+    sql = ".".join(map(compiler.quote_name_unless_alias, identifiers))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\models\sql\compiler.py", line 568, in quote_name_unless_alias
+    r = self.connection.ops.quote_name(name)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\db\backends\dummy\base.py", line 20, in complain
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: settings.DATABASES is improperly configured. Please supply the ENGINE value. Check settings documentation for more details.
+ERROR 2025-07-02 08:03:04,133 basehttp 12332 17056 "POST /api/chat/ HTTP/1.1" 500 183884
+INFO 2025-07-02 08:03:14,431 autoreload 12332 19712 C:\Users\Nazmul\Desktop\chatbot\project\settings.py changed, reloading.
+INFO 2025-07-02 08:03:17,411 autoreload 20936 20476 Watching for file changes with StatReloader
+INFO 2025-07-02 08:03:31,741 views 20936 5592 Sending query to Gemini API: hi
+INFO 2025-07-02 08:03:34,164 views 20936 5592 Chat interaction saved for user: nazmul
+INFO 2025-07-02 08:03:34,173 basehttp 20936 5592 "POST /api/chat/ HTTP/1.1" 200 116
+INFO 2025-07-02 08:04:40,091 views 20936 5592 Sending query to Gemini API: himel
+INFO 2025-07-02 08:04:40,843 views 20936 5592 Chat interaction saved for user: nazmul
+INFO 2025-07-02 08:04:40,844 basehttp 20936 5592 "POST /api/chat/ HTTP/1.1" 200 202
+INFO 2025-07-02 08:06:39,407 views 20936 5592 Sending query to Gemini API: what is himel means
+INFO 2025-07-02 08:06:40,132 views 20936 5592 Chat interaction saved for user: nazmul
+INFO 2025-07-02 08:06:40,132 basehttp 20936 5592 "POST /api/chat/ HTTP/1.1" 200 175
+INFO 2025-07-02 08:07:22,695 views 20936 5592 Sending query to Gemini API: your are worang
+INFO 2025-07-02 08:07:23,585 views 20936 5592 Chat interaction saved for user: nazmul
+INFO 2025-07-02 08:07:23,585 basehttp 20936 5592 "POST /api/chat/ HTTP/1.1" 200 297
+INFO 2025-07-02 08:07:38,547 views 20936 5592 Sending query to Gemini API: nazmul means
+INFO 2025-07-02 08:07:39,842 views 20936 5592 Chat interaction saved for user: nazmul
+INFO 2025-07-02 08:07:39,850 basehttp 20936 5592 "POST /api/chat/ HTTP/1.1" 200 401
+INFO 2025-07-02 08:15:08,386 autoreload 20936 20476 C:\Users\Nazmul\Desktop\chatbot\project\settings.py changed, reloading.
+INFO 2025-07-02 08:15:11,539 autoreload 10544 8108 Watching for file changes with StatReloader
+INFO 2025-07-02 08:15:23,551 basehttp 10544 19096 "GET / HTTP/1.1" 200 16560
+INFO 2025-07-02 08:15:23,611 basehttp 10544 19096 "GET /api/chat/history/ HTTP/1.1" 200 31245
+INFO 2025-07-02 08:15:27,838 views 10544 19096 Sending query to Gemini API: hello
+DEBUG 2025-07-02 08:15:30,032 views 10544 19096 Raw Gemini API response: Hello there! How can I help you today?
+
+INFO 2025-07-02 08:15:30,051 views 10544 19096 Chat interaction saved for user: nazmul
+INFO 2025-07-02 08:15:30,051 basehttp 10544 19096 "POST /api/chat/ HTTP/1.1" 200 122

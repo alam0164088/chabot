@@ -1,11 +1,12 @@
 import os
 from pathlib import Path
 from datetime import timedelta
-
+import dj_database_url
 from dotenv import load_dotenv
-load_dotenv() # .env ফাইল লোড করুন
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+load_dotenv()  # .env ফাইল লোড করুন
+
+# Build paths
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -14,9 +15,8 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default-django-insecure-key-for-dev
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = []
-if not DEBUG:
-    ALLOWED_HOSTS = ['your_production_domain.com', 'www.your_production_domain.com']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS += ['chabot-1izk.onrender.com']  # Render-এর ডোমেইন
 
 # Application definition
 INSTALLED_APPS = [
@@ -28,11 +28,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
-    'api', # আপনার অ্যাপের নাম যদি 'api' হয়
+    'corsheaders',  # CORS যোগ করা
+    'api',  # তোমার অ্যাপ
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Whitenoise যোগ করা
+    'corsheaders.middleware.CorsMiddleware',  # CORS মিডলওয়্যার
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -41,12 +44,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'project.urls' # আপনার প্রজেক্টের নামের সাথে 'project' মেলান
+ROOT_URLCONF = 'project.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'api' / 'templates'],  # index.html-এর জন্য
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -59,30 +62,23 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'project.wsgi.application' # আপনার প্রজেক্টের নামের সাথে 'project' মেলান
+WSGI_APPLICATION = 'project.wsgi.application'
 
 # Database
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL', f'sqlite:///{BASE_DIR / "db.sqlite3"}'),
+        conn_max_age=600,
+        conn_health_checks=True
+    )
 }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
 # Internationalization
@@ -92,9 +88,20 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
-# Default primary key field type
+# Security settings
+SECURE_SSL_REDIRECT = not DEBUG
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
+SECURE_HSTS_SECONDS = 31536000 if not DEBUG else 0
+SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
+SECURE_HSTS_PRELOAD = not DEBUG
+
+# Default primary key
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Django REST Framework settings
@@ -103,7 +110,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',  # API পাবলিক অ্যাক্সেসের জন্য
     )
 }
 
@@ -134,8 +141,15 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
-# settings.py ফাইলের একদম নিচে LOGGING কনফিগারেশনটি খুঁজুন
 
+# CORS settings
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+    'https://chabot-1izk.onrender.com',
+    'http://localhost:3000',  # লোকাল ডেভেলপমেন্ট
+]
+
+# Logging
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -151,29 +165,29 @@ LOGGING = {
     },
     'handlers': {
         'console': {
-            'level': 'INFO', # <-- এই লাইনটি 'INFO' তে সেট করুন
+            'level': 'INFO',
             'class': 'logging.StreamHandler',
             'formatter': 'simple',
         },
         'file': {
-            'level': 'DEBUG', # <-- ফাইল লগে DEBUG লেভেল রাখতে পারেন ডিবাগিং এর জন্য
+            'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'debug.log', # এটি চাইলে অন্য নামও দিতে পারেন
+            'filename': BASE_DIR / 'debug.log',
             'formatter': 'verbose',
         },
     },
     'loggers': {
         'django': {
             'handlers': ['console', 'file'],
-            'level': 'INFO', # <-- এই লাইনটি 'INFO' তে সেট করুন
+            'level': 'INFO',
             'propagate': False,
         },
-        'api': { # <-- আপনার 'api' অ্যাপের জন্য নতুন কনফিগারেশন
+        'api': {
             'handlers': ['console', 'file'],
-            'level': 'INFO', # <-- 'api' অ্যাপের জন্য 'INFO' লেভেল
+            'level': 'DEBUG',  # API-এর জন্য DEBUG লেভেল
             'propagate': False,
         },
-        '': { # <-- রুট লগার, এটিও 'INFO' লেভেলে সেট করুন
+        '': {
             'handlers': ['console', 'file'],
             'level': 'INFO',
             'propagate': False,
