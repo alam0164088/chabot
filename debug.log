@@ -1784,3 +1784,235 @@ DEBUG 2025-07-02 17:51:50,265 views 10364 20776 Raw Gemini API response: "Baby" 
 
 INFO 2025-07-02 17:51:50,281 views 10364 20776 Chat interaction saved for user: nazmul13
 INFO 2025-07-02 17:51:50,283 basehttp 10364 20776 "POST /api/chat/ HTTP/1.1" 200 313
+INFO 2025-07-02 18:22:42,464 autoreload 1788 8072 Watching for file changes with StatReloader
+INFO 2025-07-02 18:25:59,696 autoreload 5824 17524 Watching for file changes with StatReloader
+INFO 2025-07-02 18:26:06,993 basehttp 5824 3164 "GET / HTTP/1.1" 200 29639
+INFO 2025-07-02 18:26:07,282 basehttp 5824 3164 "GET /api/chat/history/ HTTP/1.1" 200 555
+INFO 2025-07-02 18:26:32,823 basehttp 5824 10488 "GET / HTTP/1.1" 200 29639
+INFO 2025-07-02 18:26:32,845 basehttp 5824 10488 "GET /api/chat/history/ HTTP/1.1" 200 555
+INFO 2025-07-02 18:26:36,361 basehttp 5824 17708 "GET / HTTP/1.1" 200 29639
+INFO 2025-07-02 18:26:36,407 basehttp 5824 17708 "GET /api/chat/history/ HTTP/1.1" 200 555
+WARNING 2025-07-02 18:26:47,192 basehttp 5824 15036 "GET /ws/chat/%E0%A6%AC%E0%A7%87%E0%A6%AC/ HTTP/1.1" 404 3255
+INFO 2025-07-02 18:27:00,872 basehttp 5824 18056 "GET /api/chat/history/ HTTP/1.1" 200 555
+WARNING 2025-07-02 18:27:09,412 log 5824 7624 Not Found: /ws/chat/lobby/
+WARNING 2025-07-02 18:27:09,412 basehttp 5824 7624 "GET /ws/chat/lobby/ HTTP/1.1" 404 3225
+INFO 2025-07-02 18:27:24,588 basehttp 5824 18056 "GET / HTTP/1.1" 200 29639
+INFO 2025-07-02 18:27:24,664 basehttp 5824 18056 "GET /api/chat/history/ HTTP/1.1" 200 555
+INFO 2025-07-02 18:27:54,524 basehttp 5824 9152 "POST /api/token/ HTTP/1.1" 200 483
+INFO 2025-07-02 18:27:54,544 basehttp 5824 9152 "GET /api/chat/history/ HTTP/1.1" 200 42556
+WARNING 2025-07-02 18:27:59,440 log 5824 18944 Not Found: /ws/chat/lobby/
+WARNING 2025-07-02 18:27:59,441 basehttp 5824 18944 "GET /ws/chat/lobby/ HTTP/1.1" 404 3225
+WARNING 2025-07-02 18:28:26,182 log 5824 15772 Not Found: /ws/chat/lobby/
+WARNING 2025-07-02 18:28:26,182 basehttp 5824 15772 "GET /ws/chat/lobby/ HTTP/1.1" 404 3225
+INFO 2025-07-02 18:29:31,160 basehttp 5824 9300 "GET /api/chat/history/ HTTP/1.1" 200 42556
+INFO 2025-07-02 18:29:33,656 views 5824 9300 Sending query to Gemini API: hi
+DEBUG 2025-07-02 18:29:35,190 views 5824 9300 Raw Gemini API response: Hi there! How can I help you today?
+
+INFO 2025-07-02 18:29:35,204 views 5824 9300 Chat interaction saved for user: nazmul
+INFO 2025-07-02 18:29:35,217 basehttp 5824 9300 "POST /api/chat/ HTTP/1.1" 200 116
+WARNING 2025-07-02 18:29:42,942 log 5824 21092 Not Found: /ws/chat/lobby/
+WARNING 2025-07-02 18:29:42,942 basehttp 5824 21092 "GET /ws/chat/lobby/ HTTP/1.1" 404 3225
+INFO 2025-07-02 18:31:27,222 autoreload 10268 12876 Watching for file changes with StatReloader
+INFO 2025-07-02 18:31:38,302 basehttp 10268 1180 "GET / HTTP/1.1" 200 29639
+INFO 2025-07-02 18:31:38,364 basehttp 10268 1180 "GET /api/chat/history/ HTTP/1.1" 200 42673
+WARNING 2025-07-02 18:31:43,822 log 10268 8348 Not Found: /ws/chat/lobby/
+WARNING 2025-07-02 18:31:43,822 basehttp 10268 8348 "GET /ws/chat/lobby/ HTTP/1.1" 404 3225
+INFO 2025-07-02 18:33:00,443 cli 20788 1204 Starting server at tcp:port=8000:interface=127.0.0.1
+INFO 2025-07-02 18:33:00,443 server 20788 1204 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2025-07-02 18:33:00,443 server 20788 1204 Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2025-07-02 18:33:00,443 server 20788 1204 Listening on TCP address 127.0.0.1:8000
+INFO 2025-07-02 18:34:05,874 server 20788 1204 Killed 0 pending application instances
+INFO 2025-07-02 18:34:17,657 autoreload 16744 14612 Watching for file changes with StatReloader
+INFO 2025-07-02 18:34:35,871 basehttp 16744 21308 "GET / HTTP/1.1" 200 29639
+INFO 2025-07-02 18:34:36,226 basehttp 16744 21308 "GET /api/chat/history/ HTTP/1.1" 200 42673
+WARNING 2025-07-02 18:34:41,351 log 16744 10668 Not Found: /ws/chat/lobby/
+WARNING 2025-07-02 18:34:41,353 basehttp 16744 10668 "GET /ws/chat/lobby/ HTTP/1.1" 404 3225
+INFO 2025-07-02 18:34:52,953 basehttp 16744 21308 "GET /api/chat/history/ HTTP/1.1" 200 42673
+WARNING 2025-07-02 18:35:10,186 log 16744 14356 Not Found: /ws/chat/lobby/
+WARNING 2025-07-02 18:35:10,186 basehttp 16744 14356 "GET /ws/chat/lobby/ HTTP/1.1" 404 3225
+INFO 2025-07-02 18:39:13,654 basehttp 16744 21308 "GET /api/chat/history/ HTTP/1.1" 200 42673
+INFO 2025-07-02 18:39:17,791 views 16744 21308 Sending query to Gemini API: hi
+DEBUG 2025-07-02 18:39:19,822 views 16744 21308 Raw Gemini API response: Hi there! How can I help you today?
+
+INFO 2025-07-02 18:39:19,841 views 16744 21308 Chat interaction saved for user: nazmul
+INFO 2025-07-02 18:39:19,842 basehttp 16744 21308 "POST /api/chat/ HTTP/1.1" 200 116
+WARNING 2025-07-02 18:39:33,974 log 16744 12652 Not Found: /ws/chat/lobby/
+WARNING 2025-07-02 18:39:33,982 basehttp 16744 12652 "GET /ws/chat/lobby/ HTTP/1.1" 404 3225
+INFO 2025-07-02 18:40:32,330 basehttp 16744 21308 "GET / HTTP/1.1" 200 29639
+INFO 2025-07-02 18:40:32,361 basehttp 16744 21308 "GET /api/chat/history/ HTTP/1.1" 200 42790
+WARNING 2025-07-02 18:40:38,001 log 16744 1208 Not Found: /ws/chat/lobby/
+WARNING 2025-07-02 18:40:38,003 basehttp 16744 1208 "GET /ws/chat/lobby/ HTTP/1.1" 404 3225
+INFO 2025-07-02 18:40:57,702 basehttp 16744 21308 "GET /api/chat/history/ HTTP/1.1" 200 42790
+WARNING 2025-07-02 18:41:00,527 log 16744 2800 Not Found: /ws/chat/lobby/
+WARNING 2025-07-02 18:41:00,527 basehttp 16744 2800 "GET /ws/chat/lobby/ HTTP/1.1" 404 3225
+INFO 2025-07-02 20:34:45,008 autoreload 13152 11576 Watching for file changes with StatReloader
+INFO 2025-07-02 20:34:52,529 basehttp 13152 18148 "GET / HTTP/1.1" 200 29639
+WARNING 2025-07-02 20:34:52,698 log 13152 18148 Unauthorized: /api/chat/history/
+WARNING 2025-07-02 20:34:52,699 basehttp 13152 18148 "GET /api/chat/history/ HTTP/1.1" 401 183
+INFO 2025-07-02 20:34:52,754 basehttp 13152 18148 "POST /api/token/refresh/ HTTP/1.1" 200 483
+INFO 2025-07-02 20:34:52,795 basehttp 13152 18148 "GET /api/chat/history/ HTTP/1.1" 200 42790
+INFO 2025-07-02 20:35:04,191 basehttp 13152 18204 "GET / HTTP/1.1" 200 29639
+INFO 2025-07-02 20:35:04,233 basehttp 13152 18204 "GET /api/chat/history/ HTTP/1.1" 200 42790
+WARNING 2025-07-02 20:35:04,342 log 13152 18204 Not Found: /favicon.ico
+WARNING 2025-07-02 20:35:04,342 basehttp 13152 18204 "GET /favicon.ico HTTP/1.1" 404 3216
+INFO 2025-07-02 20:35:17,591 views 13152 18204 Sending query to Gemini API: hello
+DEBUG 2025-07-02 20:35:19,592 views 13152 18204 Raw Gemini API response: Hello there! How can I help you today?
+
+INFO 2025-07-02 20:35:19,603 views 13152 18204 Chat interaction saved for user: nazmul
+INFO 2025-07-02 20:35:19,603 basehttp 13152 18204 "POST /api/chat/ HTTP/1.1" 200 122
+WARNING 2025-07-02 20:35:24,397 log 13152 19208 Not Found: /ws/chat/lobby/
+WARNING 2025-07-02 20:35:24,397 basehttp 13152 19208 "GET /ws/chat/lobby/ HTTP/1.1" 404 3225
+INFO 2025-07-02 20:46:13,822 cli 19100 17344 Starting server at tcp:port=8000:interface=127.0.0.1
+INFO 2025-07-02 20:46:13,822 server 19100 17344 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2025-07-02 20:46:13,822 server 19100 17344 Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2025-07-02 20:46:13,822 server 19100 17344 Listening on TCP address 127.0.0.1:8000
+INFO 2025-07-02 21:03:02,577 views 19100 16780 Sending query to Gemini API: hi
+DEBUG 2025-07-02 21:03:05,397 views 19100 16780 Raw Gemini API response: Hi there! How can I help you today?
+
+INFO 2025-07-02 21:03:05,421 views 19100 16780 Chat interaction saved for user: nazmul13
+INFO 2025-07-02 21:03:48,157 server 19100 17344 Killed 1 pending application instances
+INFO 2025-07-02 21:04:02,638 autoreload 11792 19728 Watching for file changes with StatReloader
+INFO 2025-07-02 21:04:09,745 basehttp 11792 2192 "GET / HTTP/1.1" 200 31683
+INFO 2025-07-02 21:04:10,075 basehttp 11792 2192 "GET /api/chat/history/ HTTP/1.1" 200 672
+WARNING 2025-07-02 21:04:16,173 log 11792 21044 Not Found: /ws/chat/lobby/
+WARNING 2025-07-02 21:04:16,173 basehttp 11792 21044 "GET /ws/chat/lobby/ HTTP/1.1" 404 3225
+INFO 2025-07-02 21:05:57,576 cli 6896 14280 Starting server at tcp:port=8000:interface=127.0.0.1
+INFO 2025-07-02 21:05:57,576 server 6896 14280 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2025-07-02 21:05:57,576 server 6896 14280 Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2025-07-02 21:05:57,576 server 6896 14280 Listening on TCP address 127.0.0.1:8000
+INFO 2025-07-02 21:40:07,264 views 6896 18080 Sending query to Gemini API: hi hello
+DEBUG 2025-07-02 21:40:09,563 views 6896 18080 Raw Gemini API response: Hi there! How can I help you today?
+
+INFO 2025-07-02 21:40:09,586 views 6896 18080 Chat interaction saved for user: nazmul13
+INFO 2025-07-02 21:42:06,765 server 6896 14280 Killed 1 pending application instances
+INFO 2025-07-02 21:42:17,921 autoreload 6824 2080 Watching for file changes with StatReloader
+INFO 2025-07-02 21:42:24,552 basehttp 6824 14112 "GET / HTTP/1.1" 200 34835
+INFO 2025-07-02 21:42:24,981 basehttp 6824 14112 "GET /api/chat/history/ HTTP/1.1" 200 42913
+WARNING 2025-07-02 21:42:36,757 log 6824 1304 Not Found: /ws/chat/nazmul13/
+WARNING 2025-07-02 21:42:36,758 basehttp 6824 1304 "GET /ws/chat/nazmul13/ HTTP/1.1" 404 3234
+INFO 2025-07-02 21:42:45,428 basehttp 6824 14112 "GET /api/chat/history/ HTTP/1.1" 200 42913
+WARNING 2025-07-02 21:42:50,520 log 6824 15328 Not Found: /ws/chat/nazmul13/
+WARNING 2025-07-02 21:42:50,520 basehttp 6824 15328 "GET /ws/chat/nazmul13/ HTTP/1.1" 404 3234
+INFO 2025-07-02 21:43:00,045 basehttp 6824 14112 "GET /api/chat/history/ HTTP/1.1" 200 42913
+INFO 2025-07-02 21:43:11,757 basehttp 6824 14112 "GET / HTTP/1.1" 200 34835
+INFO 2025-07-02 21:43:11,808 basehttp 6824 14112 "GET /api/chat/history/ HTTP/1.1" 200 42913
+WARNING 2025-07-02 21:43:18,212 log 6824 18244 Not Found: /ws/chat/nazmul/
+WARNING 2025-07-02 21:43:18,214 basehttp 6824 18244 "GET /ws/chat/nazmul/ HTTP/1.1" 404 3228
+INFO 2025-07-02 21:53:03,318 cli 17956 7764 Starting server at tcp:port=8000:interface=127.0.0.1
+INFO 2025-07-02 21:53:03,318 server 17956 7764 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2025-07-02 21:53:03,318 server 17956 7764 Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2025-07-02 21:53:03,318 server 17956 7764 Listening on TCP address 127.0.0.1:8000
+INFO 2025-07-02 22:32:05,193 views 17956 2488 Sending query to Gemini API: hello
+DEBUG 2025-07-02 22:32:12,831 views 17956 2488 Raw Gemini API response: Hello there! How can I help you today?
+
+INFO 2025-07-02 22:32:12,842 views 17956 2488 Chat interaction saved for user: nazmul
+INFO 2025-07-02 22:32:16,679 views 17956 7172 Sending query to Gemini API: hi
+DEBUG 2025-07-02 22:32:17,321 views 17956 7172 Raw Gemini API response: Hi there! How can I help you today?
+
+INFO 2025-07-02 22:32:17,337 views 17956 7172 Chat interaction saved for user: nazmul
+INFO 2025-07-02 22:40:19,305 server 17956 7764 Killed 0 pending application instances
+INFO 2025-07-02 22:40:31,055 autoreload 3752 3540 Watching for file changes with StatReloader
+INFO 2025-07-02 22:40:39,863 basehttp 3752 10932 "GET / HTTP/1.1" 200 37213
+INFO 2025-07-02 22:40:40,182 basehttp 3752 10932 "GET /api/chat/history/ HTTP/1.1" 200 43153
+INFO 2025-07-02 22:47:37,900 basehttp 3752 15440 "GET / HTTP/1.1" 200 37391
+WARNING 2025-07-02 22:47:37,922 log 3752 15440 Unauthorized: /api/chat/history/
+WARNING 2025-07-02 22:47:37,924 basehttp 3752 15440 "GET /api/chat/history/ HTTP/1.1" 401 183
+INFO 2025-07-02 22:47:37,942 basehttp 3752 15440 "POST /api/token/refresh/ HTTP/1.1" 200 483
+INFO 2025-07-02 22:47:37,965 basehttp 3752 15440 "GET /api/chat/history/ HTTP/1.1" 200 43153
+INFO 2025-07-02 22:48:03,883 basehttp 3752 15440 "GET / HTTP/1.1" 200 37213
+INFO 2025-07-02 22:48:03,931 basehttp 3752 15440 "GET /api/chat/history/ HTTP/1.1" 200 43153
+INFO 2025-07-02 22:50:14,645 basehttp 3752 15440 "GET / HTTP/1.1" 200 34443
+INFO 2025-07-02 22:50:14,672 basehttp 3752 15440 "GET /api/chat/history/ HTTP/1.1" 200 43153
+INFO 2025-07-02 22:50:47,411 basehttp 3752 15440 "GET / HTTP/1.1" 200 34443
+INFO 2025-07-02 22:50:47,458 basehttp 3752 15440 "GET /api/chat/history/ HTTP/1.1" 200 43153
+INFO 2025-07-02 22:51:05,271 basehttp 3752 15440 "GET / HTTP/1.1" 200 33577
+INFO 2025-07-02 22:51:05,306 basehttp 3752 15440 "GET /api/chat/history/ HTTP/1.1" 200 43153
+WARNING 2025-07-02 22:51:23,079 basehttp 3752 22192 "GET /ws/chat/%E0%A6%B9%E0%A6%BF/ HTTP/1.1" 404 3240
+INFO 2025-07-02 22:51:48,098 basehttp 3752 15440 "GET /api/chat/history/ HTTP/1.1" 200 43153
+WARNING 2025-07-02 22:51:54,812 log 3752 21392 Not Found: /ws/chat/nazmul/
+WARNING 2025-07-02 22:51:54,812 basehttp 3752 21392 "GET /ws/chat/nazmul/ HTTP/1.1" 404 3228
+INFO 2025-07-02 22:52:54,610 basehttp 3752 15440 "GET /api/chat/history/ HTTP/1.1" 200 43153
+INFO 2025-07-02 22:52:57,996 views 3752 15440 Sending query to Gemini API: hi
+DEBUG 2025-07-02 22:53:00,155 views 3752 15440 Raw Gemini API response: Hi there! How can I help you today?
+
+INFO 2025-07-02 22:53:00,155 views 3752 15440 Chat interaction saved for user: nazmul
+INFO 2025-07-02 22:53:00,170 basehttp 3752 15440 "POST /api/chat/ HTTP/1.1" 200 116
+INFO 2025-07-02 22:53:53,862 autoreload 11224 5840 Watching for file changes with StatReloader
+INFO 2025-07-02 22:54:03,294 basehttp 11224 200 "GET / HTTP/1.1" 200 34406
+INFO 2025-07-02 22:54:03,517 basehttp 11224 200 "GET /api/chat/history/ HTTP/1.1" 200 43270
+WARNING 2025-07-02 22:54:03,903 log 11224 200 Not Found: /favicon.ico
+WARNING 2025-07-02 22:54:03,903 basehttp 11224 200 "GET /favicon.ico HTTP/1.1" 404 3216
+INFO 2025-07-02 22:54:08,859 views 11224 200 Sending query to Gemini API: hi
+DEBUG 2025-07-02 22:54:10,975 views 11224 200 Raw Gemini API response: Hi there! How can I help you today?
+
+INFO 2025-07-02 22:54:10,990 views 11224 200 Chat interaction saved for user: nazmul
+INFO 2025-07-02 22:54:10,990 basehttp 11224 200 "POST /api/chat/ HTTP/1.1" 200 116
+INFO 2025-07-02 22:54:11,826 views 11224 200 Sending query to Gemini API: hello
+DEBUG 2025-07-02 22:54:12,541 views 11224 200 Raw Gemini API response: Hello there! How can I help you today?
+
+INFO 2025-07-02 22:54:12,545 views 11224 200 Chat interaction saved for user: nazmul
+INFO 2025-07-02 22:54:12,557 basehttp 11224 200 "POST /api/chat/ HTTP/1.1" 200 122
+INFO 2025-07-02 22:54:16,739 views 11224 200 Sending query to Gemini API: how are you
+DEBUG 2025-07-02 22:54:17,443 views 11224 200 Raw Gemini API response: I am doing well, thank you for asking!  How are you today?
+
+INFO 2025-07-02 22:54:17,457 views 11224 200 Chat interaction saved for user: nazmul
+INFO 2025-07-02 22:54:17,458 basehttp 11224 200 "POST /api/chat/ HTTP/1.1" 200 148
+INFO 2025-07-02 23:23:40,494 views 11224 11504 Sending query to Gemini API: hai
+INFO 2025-07-02 23:23:41,877 views 11224 20560 Sending query to Gemini API: hi
+DEBUG 2025-07-02 23:23:42,563 views 11224 11504 Raw Gemini API response: Hai! How can I help you today?
+
+INFO 2025-07-02 23:23:42,576 views 11224 11504 Chat interaction saved for user: nazmul
+INFO 2025-07-02 23:23:42,580 basehttp 11224 11504 "POST /api/chat/ HTTP/1.1" 200 112
+DEBUG 2025-07-02 23:23:42,793 views 11224 20560 Raw Gemini API response: Hi there! How can I help you today?
+
+INFO 2025-07-02 23:23:42,793 views 11224 20560 Chat interaction saved for user: nazmul
+INFO 2025-07-02 23:23:42,793 basehttp 11224 20560 "POST /api/chat/ HTTP/1.1" 200 116
+INFO 2025-07-02 23:23:43,010 views 11224 20560 Sending query to Gemini API: hi
+DEBUG 2025-07-02 23:23:43,801 views 11224 20560 Raw Gemini API response: Hi there! How can I help you today?
+
+INFO 2025-07-02 23:23:43,818 views 11224 20560 Chat interaction saved for user: nazmul
+INFO 2025-07-02 23:23:43,821 basehttp 11224 20560 "POST /api/chat/ HTTP/1.1" 200 116
+INFO 2025-07-02 23:23:48,330 views 11224 20560 Sending query to Gemini API: how are you
+DEBUG 2025-07-02 23:23:49,314 views 11224 20560 Raw Gemini API response: I am doing well, thank you for asking!  As a large language model, I don't experience emotions or feelings in the same way humans do, but I'm functioning optimally and ready to assist you. How can I help you today?
+
+INFO 2025-07-02 23:23:49,329 views 11224 20560 Chat interaction saved for user: nazmul
+INFO 2025-07-02 23:23:49,333 basehttp 11224 20560 "POST /api/chat/ HTTP/1.1" 200 304
+INFO 2025-07-02 23:25:30,039 views 11224 20560 Sending query to Gemini API: hi
+DEBUG 2025-07-02 23:25:30,688 views 11224 20560 Raw Gemini API response: Hi there! How can I help you today?
+
+INFO 2025-07-02 23:25:30,699 views 11224 20560 Chat interaction saved for user: nazmul
+INFO 2025-07-02 23:25:30,713 basehttp 11224 20560 "POST /api/chat/ HTTP/1.1" 200 116
+WARNING 2025-07-02 23:25:40,038 log 11224 4224 Not Found: /ws/chat/lobby/
+WARNING 2025-07-02 23:25:40,038 basehttp 11224 4224 "GET /ws/chat/lobby/ HTTP/1.1" 404 3225
+INFO 2025-07-02 23:25:41,586 basehttp 11224 20560 "GET /api/chat/history/ HTTP/1.1" 200 44428
+WARNING 2025-07-02 23:27:11,373 log 11224 572 Method Not Allowed: /api/register/
+WARNING 2025-07-02 23:27:11,373 basehttp 11224 572 "GET //api/register/ HTTP/1.1" 405 12689
+WARNING 2025-07-02 23:27:25,767 log 11224 572 Method Not Allowed: /api/register/
+WARNING 2025-07-02 23:27:25,768 basehttp 11224 572 "GET //api/register/ HTTP/1.1" 405 12689
+WARNING 2025-07-02 23:27:33,284 log 11224 572 Bad Request: /api/register/
+WARNING 2025-07-02 23:27:33,285 basehttp 11224 572 "POST /api/register/ HTTP/1.1" 400 12843
+INFO 2025-07-02 23:27:48,610 basehttp 11224 572 "POST /api/register/ HTTP/1.1" 201 12757
+WARNING 2025-07-02 23:29:21,181 log 11224 17712 Method Not Allowed: /api/token/
+WARNING 2025-07-02 23:29:21,183 basehttp 11224 17712 "GET //api/token/ HTTP/1.1" 405 12376
+INFO 2025-07-02 23:29:26,893 basehttp 11224 17712 "POST /api/token/ HTTP/1.1" 200 12820
+WARNING 2025-07-02 23:30:13,278 log 11224 17712 Method Not Allowed: /api/token/refresh/
+WARNING 2025-07-02 23:30:13,279 basehttp 11224 17712 "GET //api/token/refresh/ HTTP/1.1" 405 12191
+WARNING 2025-07-02 23:30:19,043 log 11224 17712 Unauthorized: /api/token/refresh/
+WARNING 2025-07-02 23:30:19,043 basehttp 11224 17712 "POST /api/token/refresh/ HTTP/1.1" 401 12191
+WARNING 2025-07-02 23:31:47,939 log 11224 17712 Unauthorized: /api/chat/
+WARNING 2025-07-02 23:31:47,939 basehttp 11224 17712 "GET //api/chat/ HTTP/1.1" 401 8513
+WARNING 2025-07-02 23:32:55,459 log 11224 17712 Unauthorized: /api/chat/history/
+WARNING 2025-07-02 23:32:55,459 basehttp 11224 17712 "GET //api/chat/history/ HTTP/1.1" 401 9971
+INFO 2025-07-02 23:36:48,855 autoreload 13880 14144 Watching for file changes with StatReloader
+INFO 2025-07-02 23:36:56,972 basehttp 13880 9200 "GET / HTTP/1.1" 200 34241
+INFO 2025-07-02 23:36:57,122 basehttp 13880 9200 "GET /api/chat/history/ HTTP/1.1" 200 44428
+INFO 2025-07-02 23:37:04,023 views 13880 9200 Sending query to Gemini API: hi
+DEBUG 2025-07-02 23:37:06,149 views 13880 9200 Raw Gemini API response: Hi there! How can I help you today?
+
+INFO 2025-07-02 23:37:06,149 views 13880 9200 Chat interaction saved for user: nazmul
+INFO 2025-07-02 23:37:06,149 basehttp 13880 9200 "POST /api/chat/ HTTP/1.1" 200 116
+INFO 2025-07-02 23:37:06,799 views 13880 9200 Sending query to Gemini API: hello
+DEBUG 2025-07-02 23:37:07,381 views 13880 9200 Raw Gemini API response: Hello there! How can I help you today?
+
+INFO 2025-07-02 23:37:07,397 views 13880 9200 Chat interaction saved for user: nazmul
+INFO 2025-07-02 23:37:07,397 basehttp 13880 9200 "POST /api/chat/ HTTP/1.1" 200 122

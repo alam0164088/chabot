@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',  # CORS যোগ করা
     'api',  # তোমার অ্যাপ
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -192,5 +193,13 @@ LOGGING = {
             'level': 'INFO',
             'propagate': False,
         },
+    },
+}
+
+ASGI_APPLICATION = 'project.asgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
     },
 }

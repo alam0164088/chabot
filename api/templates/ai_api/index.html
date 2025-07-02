@@ -238,16 +238,16 @@
             transition: background 0.3s ease;
         }
         .profile-dropdown .logout-btn:hover {
-            background: rgb(236, 72, 153); /* Neon pink on hover */
+            background: rgb(236, 72, 153); 
         }
         .error-message {
-            color: rgb(239, 68, 68); /* Neon red for error messages */
+            color: rgb(239, 68, 68); 
             font-size: 0.9em;
             text-align: center;
             margin: 10px;
         }
         button {
-            background-color: rgb(59, 130, 246); /* Neon blue for all buttons */
+            background-color: rgb(59, 130, 246); 
             color: rgb(255, 255, 255);
             border: none;
             padding: 10px;
@@ -256,15 +256,66 @@
             transition: background 0.3s ease, transform 0.2s ease;
         }
         button:hover {
-            background-color: rgb(37, 99, 235); /* Darker neon blue */
-            transform: scale(1.05); /* Slight scale-up on hover */
+            background-color: rgb(37, 99, 235); 
+            transform: scale(1.05); 
         }
         button:active {
-            transform: scale(0.95); /* Scale-down on click */
+            transform: scale(0.95); 
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        .mode-switch {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+        .mode-btn {
+            padding: 8px 18px;
+            border-radius: 20px;
+            border: none;
+            background: rgb(59, 130, 246);
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .mode-btn.active {
+            background: rgb(236, 72, 153);
+            color: #fff;
+            transform: scale(1.08);
+        }
+        .user-list-panel {
+            position: absolute;
+            top: 80px;
+            right: 40px;
+            width: 200px;
+            background: rgb(23, 29, 33);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(59,130,246,0.2);
+            padding: 12px 10px 10px 10px;
+            color: rgb(224,231,255);
+            z-index: 15;
+            display: none;
+        }
+        .user-list-panel.active {
+            display: block;
+        }
+        .user-list-title {
+            font-weight: bold;
+            color: rgb(236, 72, 153);
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .user-list-item {
+            padding: 6px 0;
+            border-bottom: 1px solid rgb(45,55,72);
+            font-size: 1em;
+        }
+        .user-list-item:last-child {
+            border-bottom: none;
         }
     </style>
 </head>
@@ -295,11 +346,18 @@
                 <button id="toggle-auth-mode" class="toggle-btn">Switch to Login</button>
             </div>
             <div id="chat-section" class="chat-section hidden">
-                <h2>Chat with AI</h2>
+                <div class="mode-switch">
+                    <button class="mode-btn active" id="ai-mode-btn">🤖 AI Chatbot</button>
+                    <button class="mode-btn" id="user-mode-btn">👤 User to User</button>
+                </div>
                 <div class="chat-display" id="chat-display"></div>
                 <div id="chat-input-area">
                     <textarea id="user-query" placeholder="Type your message..."></textarea>
                     <button id="send-query">Send</button>
+                </div>
+                <div class="user-list-panel" id="user-list-panel">
+                    <div class="user-list-title">Active Users</div>
+                    <div id="user-list"></div>
                 </div>
             </div>
         </div>
@@ -326,9 +384,20 @@
         const chatDisplay = document.getElementById('chat-display');
         const userQueryTextarea = document.getElementById('user-query');
         const sendQueryBtn = document.getElementById('send-query');
+        const aiModeBtn = document.getElementById('ai-mode-btn');
+        const userModeBtn = document.getElementById('user-mode-btn');
+        const userListPanel = document.getElementById('user-list-panel');
+        const userListDiv = document.getElementById('user-list');
 
         let isLoginMode = false; // Tracks whether we are in login or register mode
         let chatHistoryCache = [];
+        let chatMode = 'ai'; // 'ai' or 'user'
+        let ws = null;
+        let currentRoom = null;
+        let currentUsername = localStorage.getItem('username_for_display') || 'Anonymous';
+        let userChatHistory = {}; // { roomName: [ {username, message}, ... ] }
+        let userMessageNotifications = {}; // { username: count }
+        let activeUsers = [];
 
         // --- Utility Functions ---
 
@@ -497,6 +566,11 @@
             authSection.classList.add('hidden');
             chatSection.classList.remove('hidden');
             showProfileArea();
+            aiModeBtn.classList.add('active');
+            userModeBtn.classList.remove('active');
+            chatMode = 'ai';
+            closeWebSocket();
+            userListPanel.classList.remove('active');
         }
 
         function showProfileArea() {
@@ -525,30 +599,39 @@
         async function sendQuery() {
             const query = userQueryTextarea.value.trim();
             if (!query) return;
-
-            appendMessage('user', query);
-            userQueryTextarea.value = ''; // Clear input
-
-            try {
-                const response = await fetchWithAuth(`${API_BASE_URL}chat/`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ query: query })
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    appendMessage('bot', data.bot_response);
-                } else {
-                    const errorData = await response.json();
-                    appendMessage('bot', `Error: ${errorData.error || 'Failed to get response.'}`);
+            if (chatMode === 'ai') {
+                appendMessage('user', query);
+                userQueryTextarea.value = '';
+                try {
+                    const response = await fetchWithAuth(`${API_BASE_URL}chat/`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ query: query })
+                    });
+                    if (response.ok) {
+                        const data = await response.json();
+                        appendMessage('bot', data.bot_response);
+                    } else {
+                        const errorData = await response.json();
+                        appendMessage('bot', `Error: ${errorData.error || 'Failed to get response.'}`);
+                    }
+                } catch (error) {
+                    console.error('Error sending query:', error);
+                    appendMessage('bot', `System Error: ${error.message || 'Could not connect to chatbot service.'}`);
+                    if (error.message.includes("Failed to refresh token")) {
+                        showAuthSection();
+                        alert("Your session expired. Please log in again.");
+                    }
                 }
-            } catch (error) {
-                console.error('Error sending query:', error);
-                appendMessage('bot', `System Error: ${error.message || 'Could not connect to chatbot service.'}`);
-                if (error.message.includes("Failed to refresh token")) {
-                    showAuthSection(); // Force logout if token refresh fails
-                    alert("Your session expired. Please log in again.");
+            } else if (chatMode === 'user') {
+                if (ws && ws.readyState === WebSocket.OPEN) {
+                    ws.send(JSON.stringify({
+                        message: query,
+                        username: currentUsername
+                    }));
+                    userQueryTextarea.value = '';
+                } else {
+                    appendMessage('bot', 'WebSocket not connected!');
                 }
             }
         }
@@ -601,6 +684,29 @@
             showAuthSection();
             alert("You have been logged out.");
         });
+        aiModeBtn.addEventListener('click', function() {
+            if (chatMode !== 'ai') {
+                chatMode = 'ai';
+                aiModeBtn.classList.add('active');
+                userModeBtn.classList.remove('active');
+                clearChatDisplay();
+                loadChatHistory();
+                closeWebSocket();
+                userListPanel.classList.remove('active');
+                renderHistorySidebar(chatHistoryCache);
+            }
+        });
+        userModeBtn.addEventListener('click', function() {
+            if (chatMode !== 'user') {
+                chatMode = 'user';
+                aiModeBtn.classList.remove('active');
+                userModeBtn.classList.add('active');
+                clearChatDisplay();
+                startUserChat();
+                userListPanel.classList.add('active');
+                renderUserChatHistorySidebar();
+            }
+        });
         sendQueryBtn.addEventListener('click', sendQuery);
         userQueryTextarea.addEventListener('keypress', function(event) {
             if (event.key === 'Enter' && !event.shiftKey) { // Enter key without Shift
@@ -645,6 +751,103 @@
             if (!chatHistoryCache[idx]) return;
             appendMessage('user', chatHistoryCache[idx].user_query);
             appendMessage('bot', chatHistoryCache[idx].bot_response);
+        }
+
+        function startUserChat() {
+            let room = prompt('Enter room name (e.g. nazmul-joy):', 'lobby');
+            if (!room) room = 'lobby';
+            currentRoom = room;
+            currentUsername = localStorage.getItem('username_for_display') || 'Anonymous';
+            connectWebSocket(room);
+            renderUserChatHistorySidebar();
+        }
+        function connectWebSocket(room) {
+            closeWebSocket();
+            const ws_scheme = window.location.protocol === 'https:' ? 'wss' : 'ws';
+            ws = new WebSocket(`${ws_scheme}://${window.location.host}/ws/chat/${room}/`);
+            ws.onopen = function() {
+                appendMessage('bot', `Connected to room: ${room}`);
+            };
+            ws.onmessage = function(e) {
+                const data = JSON.parse(e.data);
+                if (data.type === 'user_list') {
+                    activeUsers = data.users;
+                    renderUserSidebarWithNotifications();
+                } else if (data.type === 'message') {
+                    const sender = data.username === currentUsername ? 'user' : 'bot';
+                    appendMessage(sender, `${data.username}: ${data.message}`);
+                    // Notification badge increment
+                    if (data.username !== currentUsername) {
+                        userMessageNotifications[data.username] = (userMessageNotifications[data.username] || 0) + 1;
+                        renderUserSidebarWithNotifications();
+                    }
+                }
+            };
+            ws.onclose = function() {
+                appendMessage('bot', 'Disconnected from user chat.');
+                renderUserList([]);
+            };
+            ws.onerror = function() {
+                appendMessage('bot', 'WebSocket error!');
+            };
+        }
+        function closeWebSocket() {
+            if (ws) {
+                ws.close();
+                ws = null;
+            }
+            renderUserList([]);
+        }
+        function renderUserList(users) {
+            if (chatMode === 'user' && users) {
+                userListPanel.classList.add('active');
+                userListDiv.innerHTML = users.map(u => `<div class="user-list-item">${u}</div>`).join('');
+            } else {
+                userListPanel.classList.remove('active');
+                userListDiv.innerHTML = '';
+            }
+        }
+        function renderUserChatHistorySidebar() {
+            const historyList = document.getElementById('history-list');
+            const history = userChatHistory[currentRoom] || [];
+            historyList.innerHTML = '';
+            if (history.length === 0) {
+                const emptyDiv = document.createElement('div');
+                emptyDiv.className = 'history-item';
+                emptyDiv.textContent = 'No chat history yet';
+                historyList.appendChild(emptyDiv);
+                return;
+            }
+            history.forEach((msg) => {
+                const item = document.createElement('div');
+                item.className = 'history-item';
+                item.innerHTML = `<strong>${msg.username}:</strong> ${msg.message}`;
+                historyList.appendChild(item);
+            });
+        }
+        function renderUserSidebarWithNotifications() {
+            const historyList = document.getElementById('history-list');
+            historyList.innerHTML = '';
+            if (!activeUsers || activeUsers.length === 0) {
+                const emptyDiv = document.createElement('div');
+                emptyDiv.className = 'history-item';
+                emptyDiv.textContent = 'No users in room';
+                historyList.appendChild(emptyDiv);
+                return;
+            }
+            activeUsers.forEach(username => {
+                const item = document.createElement('div');
+                item.className = 'history-item';
+                item.innerHTML = `
+                    <span>${username}</span>
+                    ${userMessageNotifications[username] ? `<span style="background:rgb(236,72,153);color:#fff;border-radius:50%;padding:2px 8px;margin-left:8px;font-size:0.9em;">${userMessageNotifications[username]}</span>` : ''}
+                `;
+                historyList.appendChild(item);
+            });
+        }
+        function clearNotificationForUser(username) {
+            userMessageNotifications[username] = 0;
+            renderUserSidebarWithNotifications();
         }
     </script>
 </body>
