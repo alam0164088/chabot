@@ -63,52 +63,21 @@
             font-size: 1.5em;
             border-bottom: 1px solid #0056b3;
         }
-        .user-profile {
+        .auth-section {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 40px;
-            height: 40px;
-            background: #007bff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2em;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            z-index: 10;
-        }
-        .profile-menu {
-            display: none;
-            position: absolute;
-            top: 50px;
-            right: 0;
+            top: 20px;
+            right: 30px;
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            padding: 15px;
-            min-width: 270px;
+            padding: 18px 24px 16px 24px;
             z-index: 10;
-        }
-        .auth-section {
-            padding: 15px;
+            min-width: 270px;
         }
         .auth-section h2 {
             margin-top: 0;
             color: #007bff;
             text-align: center;
-            font-size: 1.2em;
-        }
-        .profile-info {
-            text-align: center;
-            padding: 10px;
-        }
-        .profile-info p {
-            margin: 0;
-            font-weight: bold;
-            color: #333;
         }
         .chat-section {
             flex: 1;
@@ -133,19 +102,6 @@
             border: 1px solid #ddd;
             background-color: #e9ecef;
             border-radius: 5px;
-        }
-        button {
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            margin-bottom: 10px;
-        }
-        button:hover {
-            background-color: #0056b3;
         }
         .message {
             margin-bottom: 10px;
@@ -186,12 +142,6 @@
             width: auto;
             min-width: 80px;
         }
-        .error-message {
-            color: red;
-            font-size: 0.9em;
-            text-align: center;
-            margin-bottom: 10px;
-        }
         .hidden {
             display: none;
         }
@@ -199,8 +149,6 @@
             .main-layout { flex-direction: column; }
             .sidebar { width: 100%; height: 180px; flex-direction: row; border-right: none; border-bottom: 1.5px solid #e0e0e0; }
             .container { height: calc(100vh - 180px); }
-            .user-profile { top: 5px; right: 5px; width: 35px; height: 35px; }
-            .profile-menu { top: 45px; min-width: 200px; right: 5px; }
         }
     </style>
 </head>
@@ -214,26 +162,20 @@
         </div>
         <div class="container">
             <div class="header">Sparktech AI Chatbot</div>
-            <div class="user-profile" id="user-profile">
-                <span id="user-initial"></span>
-                <div class="profile-menu" id="profile-menu">
-                    <div id="auth-section" class="auth-section">
-                        <h2 id="auth-mode">Register</h2>
-                        <div class="error-message" id="auth-error"></div>
-                        <input type="text" id="username" placeholder="Username">
-                        <input type="email" id="email" placeholder="Email (optional)">
-                        <input type="password" id="password" placeholder="Password">
-                        <button id="auth-submit">Register</button>
-                        <button id="toggle-auth-mode" class="toggle-btn">Switch to Login</button>
-                    </div>
-                    <div id="profile-info" class="profile-info hidden">
-                        <p id="current-user"></p>
-                        <button id="logout-btn">Logout</button>
-                    </div>
-                </div>
+            <div id="auth-section" class="auth-section">
+                <h2 id="auth-mode">Register</h2>
+                <div class="error-message" id="auth-error"></div>
+                <input type="text" id="username" placeholder="Username">
+                <input type="email" id="email" placeholder="Email (optional)">
+                <input type="password" id="password" placeholder="Password">
+                <button id="auth-submit">Register</button>
+                <button id="toggle-auth-mode" class="toggle-btn">Switch to Login</button>
             </div>
             <div id="chat-section" class="chat-section hidden">
                 <h2>Chat with AI</h2>
+                <p>Logged in as: <strong id="current-user"></strong></p>
+                <button id="logout-btn">Logout</button>
+                <hr>
                 <div class="chat-display" id="chat-display"></div>
                 <div id="chat-input-area">
                     <textarea id="user-query" placeholder="Type your message..."></textarea>
@@ -247,11 +189,8 @@
         const API_BASE_URL = '/api/'; 
 
         // Get DOM elements
-        const userProfile = document.getElementById('user-profile');
-        const userInitial = document.getElementById('user-initial');
-        const profileMenu = document.getElementById('profile-menu');
         const authSection = document.getElementById('auth-section');
-        const profileInfo = document.getElementById('profile-info');
+        const chatSection = document.getElementById('chat-section');
         const authMode = document.getElementById('auth-mode');
         const usernameInput = document.getElementById('username');
         const emailInput = document.getElementById('email');
@@ -261,7 +200,6 @@
         const authErrorDiv = document.getElementById('auth-error');
         const currentUserSpan = document.getElementById('current-user');
         const logoutBtn = document.getElementById('logout-btn');
-        const chatSection = document.getElementById('chat-section');
         const chatDisplay = document.getElementById('chat-display');
         const userQueryTextarea = document.getElementById('user-query');
         const sendQueryBtn = document.getElementById('send-query');
@@ -392,7 +330,7 @@
                     if (isLoginMode) {
                         setAuthToken(data); // Save access and refresh tokens
                         localStorage.setItem('username_for_display', username); // Store username for display
-                        updateProfileUI(username);
+                        currentUserSpan.textContent = username;
                         showChatSection();
                         loadChatHistory();
                     } else {
@@ -422,18 +360,8 @@
             emailInput.value = '';
         }
 
-        function updateProfileUI(username) {
-            userInitial.textContent = username ? username[0].toUpperCase() : '';
-            currentUserSpan.textContent = username || '';
-            authSection.classList.add('hidden');
-            profileInfo.classList.remove('hidden');
-            profileMenu.style.display = 'none';
-        }
-
         function showAuthSection() {
-            userInitial.textContent = '';
             authSection.classList.remove('hidden');
-            profileInfo.classList.add('hidden');
             chatSection.classList.add('hidden');
             clearAuthTokens();
             localStorage.removeItem('username_for_display'); // Clear stored username
@@ -444,9 +372,7 @@
 
         function showChatSection() {
             authSection.classList.add('hidden');
-            profileInfo.classList.add('hidden');
             chatSection.classList.remove('hidden');
-            profileMenu.style.display = 'none';
         }
 
         function clearChatDisplay() {
@@ -522,10 +448,6 @@
         }
 
         // --- Event Listeners ---
-        userProfile.addEventListener('click', () => {
-            profileMenu.style.display = profileMenu.style.display === 'block' ? 'none' : 'block';
-        });
-
         authSubmitBtn.addEventListener('click', handleAuthSubmit);
         toggleAuthModeBtn.addEventListener('click', toggleAuthMode);
         logoutBtn.addEventListener('click', logout);
@@ -541,7 +463,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const storedUsername = localStorage.getItem('username_for_display');
             if (getAccessToken() && storedUsername) {
-                updateProfileUI(storedUsername);
+                currentUserSpan.textContent = storedUsername;
                 showChatSection();
                 loadChatHistory();
             } else {
@@ -549,7 +471,7 @@
             }
         });
 
-        // --- History Sidebar ---
+        // Add/replace the following functions and logic for history sidebar
         function renderHistorySidebar(history) {
             const historyList = document.getElementById('history-list');
             historyList.innerHTML = '';
@@ -569,7 +491,6 @@
                 historyList.appendChild(item);
             });
         }
-
         function showSingleHistory(idx) {
             clearChatDisplay();
             if (!chatHistoryCache[idx]) return;
