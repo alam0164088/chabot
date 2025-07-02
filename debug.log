@@ -1001,3 +1001,102 @@ Chat interaction saved for user: nazmul
 Chat interaction saved for user: nazmul
 Chat interaction saved for user: nazmul
 Chat interaction saved for user: nazmul
+Watching for file changes with StatReloader
+Chat interaction saved for user: nazmul
+Chat interaction saved for user: nazmul
+Chat interaction saved for user: nazmul
+C:\Users\Nazmul\Desktop\chatbot\project\settings.py changed, reloading.
+INFO 2025-07-02 07:21:49,918 autoreload 11692 5564 Watching for file changes with StatReloader
+INFO 2025-07-02 07:22:03,369 basehttp 11692 21296 "GET / HTTP/1.1" 200 16560
+INFO 2025-07-02 07:22:03,485 basehttp 11692 21296 "GET /api/chat/history/ HTTP/1.1" 200 19058
+INFO 2025-07-02 07:22:09,442 views 11692 21296 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:22:09,442 basehttp 11692 21296 "POST /api/chat/ HTTP/1.1" 200 171
+INFO 2025-07-02 07:23:30,030 views 11692 5444 Sending query to Gemini API: hello
+INFO 2025-07-02 07:23:30,765 views 11692 5444 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:23:30,765 basehttp 11692 5444 "POST /api/chat/ HTTP/1.1" 200 122
+INFO 2025-07-02 07:23:56,411 autoreload 11048 3100 Watching for file changes with StatReloader
+INFO 2025-07-02 07:24:03,088 basehttp 11048 9876 "GET / HTTP/1.1" 200 16560
+INFO 2025-07-02 07:24:03,396 basehttp 11048 9876 "GET /api/chat/history/ HTTP/1.1" 200 19353
+INFO 2025-07-02 07:24:25,651 basehttp 11048 9876 "GET / HTTP/1.1" 200 16560
+INFO 2025-07-02 07:24:25,684 basehttp 11048 9876 "GET /api/chat/history/ HTTP/1.1" 200 19353
+INFO 2025-07-02 07:24:32,596 views 11048 9876 Sending query to Gemini API: hi
+INFO 2025-07-02 07:24:34,751 views 11048 9876 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:24:34,751 basehttp 11048 9876 "POST /api/chat/ HTTP/1.1" 200 116
+INFO 2025-07-02 07:24:37,033 views 11048 9876 Sending query to Gemini API: hello
+INFO 2025-07-02 07:24:37,711 views 11048 9876 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:24:37,711 basehttp 11048 9876 "POST /api/chat/ HTTP/1.1" 200 122
+INFO 2025-07-02 07:24:39,571 views 11048 12548 Sending query to Gemini API: hello
+INFO 2025-07-02 07:24:40,184 views 11048 12548 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:24:40,199 basehttp 11048 12548 "POST /api/chat/ HTTP/1.1" 200 122
+INFO 2025-07-02 07:31:58,157 autoreload 11048 3100 C:\Users\Nazmul\Desktop\chatbot\project\settings.py changed, reloading.
+INFO 2025-07-02 07:33:07,002 autoreload 6792 4252 Watching for file changes with StatReloader
+INFO 2025-07-02 07:33:31,135 views 6792 18272 Sending query to Gemini API: hai
+INFO 2025-07-02 07:33:33,744 views 6792 18272 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:33:33,744 basehttp 6792 18272 "POST /api/chat/ HTTP/1.1" 200 117
+INFO 2025-07-02 07:41:18,209 views 6792 5472 Sending query to Gemini API: hhi
+INFO 2025-07-02 07:41:20,569 views 6792 5472 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:41:20,570 basehttp 6792 5472 "POST /api/chat/ HTTP/1.1" 200 140
+INFO 2025-07-02 07:41:32,099 views 6792 5472 Sending query to Gemini API: himel love you
+INFO 2025-07-02 07:41:33,753 views 6792 5472 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:41:33,754 basehttp 6792 5472 "POST /api/chat/ HTTP/1.1" 200 157
+WARNING 2025-07-02 07:44:32,505 log 6792 4400 Unauthorized: /api/chat/
+WARNING 2025-07-02 07:44:32,506 basehttp 6792 4400 "POST /api/chat/ HTTP/1.1" 401 172
+ERROR 2025-07-02 07:44:32,553 log 6792 4400 Internal Server Error: /api/token/refresh/
+Traceback (most recent call last):
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework_simplejwt\views.py", line 44, in post
+    serializer.is_valid(raise_exception=True)
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework\serializers.py", line 447, in run_validation
+    value = self.validate(value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 141, in validate
+    refresh.outstand()
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\rest_framework_simplejwt\tokens.py", line 222, in outstand
+    return OutstandingToken.objects.get_or_create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'OutstandingToken' has no attribute 'objects'
+ERROR 2025-07-02 07:44:32,569 basehttp 6792 4400 "POST /api/token/refresh/ HTTP/1.1" 500 118389
+INFO 2025-07-02 07:44:41,897 basehttp 6792 4400 "POST /api/token/ HTTP/1.1" 200 483
+INFO 2025-07-02 07:44:41,915 basehttp 6792 4400 "GET /api/chat/history/ HTTP/1.1" 200 20133
+INFO 2025-07-02 07:44:45,630 views 6792 4400 Sending query to Gemini API: hello
+INFO 2025-07-02 07:44:46,315 views 6792 4400 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:44:46,315 basehttp 6792 4400 "POST /api/chat/ HTTP/1.1" 200 122
+INFO 2025-07-02 07:45:02,198 views 6792 4400 Sending query to Gemini API: i need some movie name
+INFO 2025-07-02 07:45:03,630 views 6792 4400 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:45:03,644 basehttp 6792 4400 "POST /api/chat/ HTTP/1.1" 200 622
+INFO 2025-07-02 07:45:26,740 views 6792 4400 Sending query to Gemini API: give dark movie name
+INFO 2025-07-02 07:45:27,881 views 6792 4400 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:45:27,881 basehttp 6792 4400 "POST /api/chat/ HTTP/1.1" 200 308
+INFO 2025-07-02 07:46:09,488 views 6792 4400 Sending query to Gemini API: please tell something about pyanchyat
+INFO 2025-07-02 07:46:12,595 views 6792 4400 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:46:12,611 basehttp 6792 4400 "POST /api/chat/ HTTP/1.1" 200 1908
+INFO 2025-07-02 07:46:35,095 views 6792 4400 Sending query to Gemini API: tell something about story
+INFO 2025-07-02 07:46:37,419 views 6792 4400 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:46:37,420 basehttp 6792 4400 "POST /api/chat/ HTTP/1.1" 200 1438
+INFO 2025-07-02 07:47:20,938 views 6792 4400 Sending query to Gemini API: please give some actors name
+INFO 2025-07-02 07:47:22,957 views 6792 4400 Chat interaction saved for user: nazmul
+INFO 2025-07-02 07:47:22,957 basehttp 6792 4400 "POST /api/chat/ HTTP/1.1" 200 901

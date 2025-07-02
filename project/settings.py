@@ -134,23 +134,49 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+# settings.py ফাইলের একদম নিচে LOGGING কনফিগারেশনটি খুঁজুন
 
-# Logging configuration
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
     'handlers': {
+        'console': {
+            'level': 'INFO', # <-- এই লাইনটি 'INFO' তে সেট করুন
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
         'file': {
-            'level': 'DEBUG',
+            'level': 'DEBUG', # <-- ফাইল লগে DEBUG লেভেল রাখতে পারেন ডিবাগিং এর জন্য
             'class': 'logging.FileHandler',
-            'filename': 'debug.log',
+            'filename': 'debug.log', # এটি চাইলে অন্য নামও দিতে পারেন
+            'formatter': 'verbose',
         },
     },
     'loggers': {
-        '': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO', # <-- এই লাইনটি 'INFO' তে সেট করুন
+            'propagate': False,
+        },
+        'api': { # <-- আপনার 'api' অ্যাপের জন্য নতুন কনফিগারেশন
+            'handlers': ['console', 'file'],
+            'level': 'INFO', # <-- 'api' অ্যাপের জন্য 'INFO' লেভেল
+            'propagate': False,
+        },
+        '': { # <-- রুট লগার, এটিও 'INFO' লেভেলে সেট করুন
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': False,
         },
     },
 }
