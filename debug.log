@@ -2016,3 +2016,16 @@ DEBUG 2025-07-02 23:37:07,381 views 13880 9200 Raw Gemini API response: Hello th
 
 INFO 2025-07-02 23:37:07,397 views 13880 9200 Chat interaction saved for user: nazmul
 INFO 2025-07-02 23:37:07,397 basehttp 13880 9200 "POST /api/chat/ HTTP/1.1" 200 122
+INFO 2025-07-03 10:50:23,470 autoreload 828 16088 Watching for file changes with StatReloader
+INFO 2025-07-03 10:50:32,720 basehttp 828 3968 "GET / HTTP/1.1" 200 34241
+WARNING 2025-07-03 10:50:32,964 log 828 3968 Unauthorized: /api/chat/history/
+WARNING 2025-07-03 10:50:32,964 basehttp 828 3968 "GET /api/chat/history/ HTTP/1.1" 401 183
+INFO 2025-07-03 10:50:33,027 basehttp 828 3968 "POST /api/token/refresh/ HTTP/1.1" 200 483
+INFO 2025-07-03 10:50:33,125 basehttp 828 3968 "GET /api/chat/history/ HTTP/1.1" 200 44668
+WARNING 2025-07-03 10:50:33,149 log 828 14860 Not Found: /favicon.ico
+WARNING 2025-07-03 10:50:33,151 basehttp 828 14860 "GET /favicon.ico HTTP/1.1" 404 3216
+INFO 2025-07-03 10:50:38,199 views 828 12848 Sending query to Gemini API: hello
+DEBUG 2025-07-03 10:50:40,361 views 828 12848 Raw Gemini API response: Hello there! How can I help you today?
+
+INFO 2025-07-03 10:50:40,370 views 828 12848 Chat interaction saved for user: nazmul
+INFO 2025-07-03 10:50:40,372 basehttp 828 12848 "POST /api/chat/ HTTP/1.1" 200 122
