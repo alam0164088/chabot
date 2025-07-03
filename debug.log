@@ -2029,3 +2029,220 @@ DEBUG 2025-07-03 10:50:40,361 views 828 12848 Raw Gemini API response: Hello the
 
 INFO 2025-07-03 10:50:40,370 views 828 12848 Chat interaction saved for user: nazmul
 INFO 2025-07-03 10:50:40,372 basehttp 828 12848 "POST /api/chat/ HTTP/1.1" 200 122
+INFO 2025-07-03 10:55:09,507 autoreload 21980 5268 Watching for file changes with StatReloader
+INFO 2025-07-03 10:55:16,549 basehttp 21980 20360 "GET / HTTP/1.1" 200 34241
+INFO 2025-07-03 10:55:16,714 basehttp 21980 20360 "GET /api/chat/history/ HTTP/1.1" 200 44791
+INFO 2025-07-03 10:55:26,144 basehttp 21980 20360 "GET / HTTP/1.1" 200 34241
+INFO 2025-07-03 10:55:26,210 basehttp 21980 20360 "GET /api/chat/history/ HTTP/1.1" 200 44791
+INFO 2025-07-03 10:55:29,744 views 21980 20360 Sending query to Gemini API: hello
+ERROR 2025-07-03 10:55:30,346 views 21980 20360 Gemini API Call Error: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 50
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 31
+}
+]
+Traceback (most recent call last):
+  File "C:\Users\Nazmul\Desktop\chatbot\api\views.py", line 99, in post
+    response = GEMINI_MODEL.generate_content(user_query)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 830, in generate_content
+    response = rpc(
+               ^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+           ^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+             ^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\api_core\grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 50
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 31
+}
+]
+ERROR 2025-07-03 10:55:30,450 log 21980 20360 Internal Server Error: /api/chat/
+ERROR 2025-07-03 10:55:30,451 basehttp 21980 20360 "POST /api/chat/ HTTP/1.1" 500 727
+INFO 2025-07-03 10:55:45,877 basehttp 21980 7868 "GET / HTTP/1.1" 200 34241
+INFO 2025-07-03 10:55:46,052 basehttp 21980 7868 "GET /api/chat/history/ HTTP/1.1" 200 44791
+WARNING 2025-07-03 10:55:46,448 log 21980 7868 Not Found: /favicon.ico
+WARNING 2025-07-03 10:55:46,449 basehttp 21980 7868 "GET /favicon.ico HTTP/1.1" 404 3216
+INFO 2025-07-03 10:55:48,121 basehttp 21980 7868 "GET / HTTP/1.1" 200 34241
+INFO 2025-07-03 10:55:48,279 basehttp 21980 7868 "GET /api/chat/history/ HTTP/1.1" 200 44791
+INFO 2025-07-03 10:55:52,501 views 21980 7868 Sending query to Gemini API: hello
+ERROR 2025-07-03 10:55:52,850 views 21980 7868 Gemini API Call Error: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 50
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 8
+}
+]
+Traceback (most recent call last):
+  File "C:\Users\Nazmul\Desktop\chatbot\api\views.py", line 99, in post
+    response = GEMINI_MODEL.generate_content(user_query)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 830, in generate_content
+    response = rpc(
+               ^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+           ^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+             ^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Nazmul\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\api_core\grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 50
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 8
+}
+]
+ERROR 2025-07-03 10:55:52,874 log 21980 7868 Internal Server Error: /api/chat/
+ERROR 2025-07-03 10:55:52,876 basehttp 21980 7868 "POST /api/chat/ HTTP/1.1" 500 726
+INFO 2025-07-03 10:57:43,354 basehttp 21980 19792 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-07-03 10:57:43,630 basehttp 21980 19792 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4160
+INFO 2025-07-03 10:57:43,682 basehttp 21980 3912 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2025-07-03 10:57:43,683 basehttp 21980 3820 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2804
+INFO 2025-07-03 10:57:43,685 basehttp 21980 19792 "GET /static/admin/css/base.css HTTP/1.1" 200 22092
+INFO 2025-07-03 10:57:43,687 basehttp 21980 7644 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-07-03 10:57:43,702 basehttp 21980 3124 "GET /static/admin/css/responsive.css HTTP/1.1" 200 17972
+INFO 2025-07-03 10:57:43,710 basehttp 21980 13764 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-07-03 10:57:43,737 basehttp 21980 3124 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-07-03 10:57:46,621 basehttp 21980 17072 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-07-03 10:57:46,661 basehttp 21980 17072 "GET /admin/ HTTP/1.1" 200 7399
+INFO 2025-07-03 10:57:46,694 basehttp 21980 17072 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-07-03 10:57:46,718 basehttp 21980 12252 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-07-03 10:57:46,718 basehttp 21980 17072 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-07-03 10:57:53,410 basehttp 21980 17072 "GET /admin/auth/user/ HTTP/1.1" 200 13364
+INFO 2025-07-03 10:57:53,459 basehttp 21980 17072 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-07-03 10:57:53,470 basehttp 21980 14084 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-07-03 10:57:53,484 basehttp 21980 14488 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-07-03 10:57:53,498 basehttp 21980 2108 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-07-03 10:57:53,504 basehttp 21980 2556 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9097
+INFO 2025-07-03 10:57:53,518 basehttp 21980 17072 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-07-03 10:57:53,532 basehttp 21980 2556 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-07-03 10:57:53,533 basehttp 21980 14084 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-07-03 10:57:53,550 basehttp 21980 17072 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-07-03 10:57:53,577 basehttp 21980 2108 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-03 10:57:53,577 basehttp 21980 14084 "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+INFO 2025-07-03 10:57:53,599 basehttp 21980 12252 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-07-03 10:57:53,637 basehttp 21980 12252 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-07-03 10:57:53,695 basehttp 21980 14488 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-07-03 10:57:53,728 basehttp 21980 14488 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-07-03 10:57:53,730 basehttp 21980 14084 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-07-03 10:57:53,732 basehttp 21980 12252 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2025-07-03 10:58:16,017 basehttp 21980 12252 "GET /admin/auth/group/ HTTP/1.1" 200 9410
+INFO 2025-07-03 10:58:16,029 basehttp 21980 12252 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-03 10:58:19,064 basehttp 21980 12252 "GET /admin/auth/user/ HTTP/1.1" 200 13364
+INFO 2025-07-03 10:58:19,077 basehttp 21980 12252 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-03 10:58:20,646 basehttp 21980 12252 "GET /admin/api/chatmessage/ HTTP/1.1" 200 41401
+INFO 2025-07-03 10:58:20,658 basehttp 21980 12252 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-03 10:58:29,961 basehttp 21980 12252 "GET /admin/api/chatmessage/?p=2 HTTP/1.1" 200 10354
+INFO 2025-07-03 10:58:29,978 basehttp 21980 12252 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-03 10:58:35,752 basehttp 21980 12252 "GET /admin/api/chatmessage/add/?_changelist_filters=p%3D2 HTTP/1.1" 200 11113
+INFO 2025-07-03 10:58:35,772 basehttp 21980 14084 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-03 10:58:35,785 basehttp 21980 12252 "GET /static/admin/css/forms.css HTTP/1.1" 200 8710
+INFO 2025-07-03 10:58:35,793 basehttp 21980 14488 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-07-03 10:58:35,815 basehttp 21980 14084 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11564
+INFO 2025-07-03 10:58:35,816 basehttp 21980 12252 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-07-03 10:58:44,764 basehttp 21980 12252 "GET /admin/auth/group/ HTTP/1.1" 200 9410
+INFO 2025-07-03 10:58:44,784 basehttp 21980 12252 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-03 10:58:45,997 basehttp 21980 12252 "GET /admin/auth/user/ HTTP/1.1" 200 13364
+INFO 2025-07-03 10:58:46,020 basehttp 21980 12252 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-03 11:10:47,352 autoreload 2800 12948 Watching for file changes with StatReloader
+INFO 2025-07-03 11:11:01,472 basehttp 2800 11352 "GET / HTTP/1.1" 200 34241
+INFO 2025-07-03 11:11:01,561 basehttp 2800 11352 "GET /api/chat/history/ HTTP/1.1" 200 44791
+INFO 2025-07-03 11:11:04,307 views 2800 11352 Sending query to Gemini API: hi
+DEBUG 2025-07-03 11:11:06,615 views 2800 11352 Raw Gemini API response: Hi there! How can I help you today?
+
+INFO 2025-07-03 11:11:06,630 views 2800 11352 Chat interaction saved for user: nazmul
+INFO 2025-07-03 11:11:06,631 basehttp 2800 11352 "POST /api/chat/ HTTP/1.1" 200 116
